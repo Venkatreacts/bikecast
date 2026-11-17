@@ -5,3 +5,4 @@ __pycache__/
 .streamlit/secrets.toml
 .superpowers/
 .venv/
+data/ML_Project_Batch_details.xlsx
