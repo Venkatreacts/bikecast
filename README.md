@@ -46,6 +46,9 @@ PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest
 
 ## Data
 
+The course batch sheet (`data/ML_Project_Batch_details.xlsx`, read by the PBL 1 notebook to confirm the team
+rows) is not published because it lists the whole class. Place it in `data/` to re-run that cell.
+
 Fanaee-T, H. and Gama, J. (2013). *Bike Sharing Dataset*. UCI Machine Learning Repository,
 https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset (CC BY 4.0).
 Hourly and daily rental counts from Capital Bikeshare, Washington D.C., 2011–2012.
