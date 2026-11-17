@@ -1,0 +1,1893 @@
+{
+ "RES": {
+  "threshold": 130.0,
+  "mean": 189.46308763450142,
+  "median": 142.0,
+  "std": 181.38759909186476,
+  "Q1": 40.0,
+  "Q3": 281.0,
+  "p99": 782.2200000000012,
+  "max": 977.0,
+  "skew": 1.277301346349497,
+  "vmr": 173.65631224052566,
+  "var": 32901.461104311056,
+  "P_H": 0.5247712756775419,
+  "P_C": 0.656712123827608,
+  "P_C_H": 0.7035087719298245,
+  "P_H_C": 0.5621659511083852,
+  "P_H_by_weather": {
+   "1": 0.5621659511083852,
+   "2": 0.5044014084507042,
+   "3": 0.28964059196617337,
+   "4": 0.3333333333333333
+  },
+  "E_season": {
+   "1": 111.11456859971712,
+   "2": 208.34406894987526,
+   "3": 236.01623665480426,
+   "4": 198.86885633270322
+  },
+  "E_yr": {
+   "0": 143.79444765760556,
+   "1": 234.6663613464621
+  },
+  "E_weather": {
+   "1": 204.8692718829405,
+   "2": 175.16549295774647,
+   "3": 111.57928118393235,
+   "4": 74.33333333333333
+  },
+  "chi2_wd": 80.31251455869223,
+  "p_wd": 3.1963826099712087e-19,
+  "V_wd": 0.06797969633499266,
+  "chi2_weather": 386.5742444495856,
+  "V_weather": 0.14914340921939706,
+  "n_sig_hours": 18,
+  "n_bonf_hours": 18,
+  "mean08_w": 477.00604838709677,
+  "mean08_nw": 105.65367965367966,
+  "mean13_w": 198.429718875502,
+  "mean13_nw": 372.73160173160176,
+  "V08": 0.7343670812706533,
+  "cov_temp": 14.137599681697692,
+  "cov_atemp": 12.497567008747806,
+  "cov_hum": -11.300287012286937,
+  "cov_windspeed": 2.0689509301672,
+  "corr_cnt": 1.0,
+  "corr_temp": 0.4047722757786578,
+  "corr_atemp": 0.40092930412663574,
+  "corr_hum": -0.32291074082456017,
+  "corr_windspeed": 0.09323378392612537,
+  "corr_temp_atemp": 0.9876721390396437,
+  "poly_best": 3,
+  "poly_rmse": 1519.4937233245282,
+  "poly_peak": 27.07483514381271,
+  "poly_peak_all": 27.404975618060202,
+  "poly_r2_test": 0.41973338535095983,
+  "poly_r2_train": 0.4794843836412348,
+  "poly_r2_full": 0.46265262824587394,
+  "poly_train_rmse_1": 1480.0493996129123,
+  "poly_train_rmse_9": 1359.4354292206915,
+  "poly_chr_best": 1,
+  "poly_mode_best": 9,
+  "poly_median_best": 3,
+  "poly_median_rmse": 1422.0363474721785,
+  "poly_wins3": 80,
+  "poly_wins9": 82,
+  "n_enc": 77,
+  "n_raw": 12,
+  "ols_raw_r2": 0.3090246205295274,
+  "ols_enc_r2": 0.7738242865232108,
+  "ols_enc_log_r2": 0.8911361904452767,
+  "ols_enc_rmse": 104.85802491430525,
+  "ols_enc_mae": 78.09555075724936,
+  "ols_enc_log_rmse": 72.74789856900173,
+  "ols_enc_log_mae": 44.8005074953063,
+  "ols_neg_cnt": 0.805523590333717,
+  "ols_neg_log": 0.0,
+  "ols_raw_log_r2": 0.15198313842415223,
+  "ols_raw_rmse": 183.27784731011985,
+  "alpha_cnt": 100.0,
+  "alpha_log": 316.2277660168379,
+  "w_temp_lo": 25.684139956737372,
+  "w_atemp_lo": 14.879043212954265,
+  "w_temp_hi": 23.875036769034516,
+  "w_atemp_hi": 22.736857611241383,
+  "huber_rmse": 107.8454209319684,
+  "huber_r2": 0.760753252472756,
+  "huber_log_rmse": 74.82203062004568,
+  "huber_log_r2": 0.8848400139441982,
+  "cov_cnt_all": 0.8489643268124281,
+  "cov_cnt_peak": 0.5172413793103449,
+  "cov_log_all": 0.9312428078250863,
+  "cov_log_peak": 0.9413793103448276,
+  "blr_rmse": 104.94949495688839,
+  "blr_r2": 0.7734295179664235,
+  "blr_log_rmse": 72.63547841335748,
+  "blr_log_r2": 0.8914723934243405,
+  "best_reg_model": "Bayesian linear (evidence)",
+  "best_reg_rmse": 72.63547841335748,
+  "best_reg_mae": 44.75277906064161,
+  "best_reg_r2": 0.8914723934243405,
+  "mae_evening": 83.53490074078093,
+  "mae_night": 9.57497089004762,
+  "laplace_dp_mean": 0.005663748229608943,
+  "laplace_dp_max": 0.07756037249504737,
+  "laplace_acc_map": 0.9257767548906789,
+  "laplace_acc": 0.9257767548906789,
+  "unsure_share": 0.024453394706559262,
+  "unsure_err": 0.35294117647058826,
+  "conf_share": 0.8578826237054085,
+  "conf_err": 0.035211267605633804,
+  "best_cls": "SVM RBF kernel (encoded)",
+  "rbf_enc_acc": 0.9321058688147296,
+  "rbf_enc_f1": 0.9465337562301767,
+  "rbf_enc_auc": 0.9783861640926067,
+  "rbf_raw_auc": 0.9609287671503892,
+  "lin_raw_auc": 0.8832024752804051,
+  "lin_enc_auc": 0.9748656443911214,
+  "nb_auc": 0.8403584747547118,
+  "nb_acc": 0.8472382048331415,
+  "acc_far": 0.9772879091516367,
+  "acc_near": 0.6514522821576764,
+  "mae_evening_ridge": 85.04262498755818,
+  "mae_night_ridge": 9.892517168004275,
+  "n_claims": 111,
+  "n_claims_match": 105,
+  "n_claims_differ": 6
+ },
+ "regression": [
+  {
+   "RMSE": 183.27784731011985,
+   "MAE": 138.29175310827316,
+   "R2": 0.3090246205295274,
+   "Model": "OLS / least squares",
+   "Features": "raw",
+   "Target": "cnt",
+   "neg. forecasts %": 0.028768699654775604,
+   "alpha": NaN,
+   "cov95_all": NaN,
+   "cov95_peak": NaN
+  },
+  {
+   "RMSE": 203.03968571269456,
+   "MAE": 139.82920017900778,
+   "R2": 0.15198313842415223,
+   "Model": "OLS / least squares",
+   "Features": "raw",
+   "Target": "log1p(cnt)",
+   "neg. forecasts %": 0.0,
+   "alpha": NaN,
+   "cov95_all": NaN,
+   "cov95_peak": NaN
+  },
+  {
+   "RMSE": 104.85802491430525,
+   "MAE": 78.09555075724936,
+   "R2": 0.7738242865232108,
+   "Model": "OLS / least squares",
+   "Features": "encoded",
+   "Target": "cnt",
+   "neg. forecasts %": 0.805523590333717,
+   "alpha": NaN,
+   "cov95_all": NaN,
+   "cov95_peak": NaN
+  },
+  {
+   "RMSE": 72.74789856900173,
+   "MAE": 44.8005074953063,
+   "R2": 0.8911361904452767,
+   "Model": "OLS / least squares",
+   "Features": "encoded",
+   "Target": "log1p(cnt)",
+   "neg. forecasts %": 0.0,
+   "alpha": NaN,
+   "cov95_all": NaN,
+   "cov95_peak": NaN
+  },
+  {
+   "RMSE": 105.66136259085023,
+   "MAE": 78.70829486791496,
+   "R2": 0.7703454593292123,
+   "Model": "Ridge (CV \u03b1)",
+   "Features": "encoded",
+   "Target": "cnt",
+   "neg. forecasts %": 0.7767548906789413,
+   "alpha": 100.0,
+   "cov95_all": NaN,
+   "cov95_peak": NaN
+  },
+  {
+   "RMSE": 72.74262562967706,
+   "MAE": 45.99311856947142,
+   "R2": 0.8911519712848645,
+   "Model": "Ridge (CV \u03b1)",
+   "Features": "encoded",
+   "Target": "log1p(cnt)",
+   "neg. forecasts %": 0.0,
+   "alpha": 316.2277660168379,
+   "cov95_all": NaN,
+   "cov95_peak": NaN
+  },
+  {
+   "RMSE": 107.8454209319684,
+   "MAE": 78.30326028087237,
+   "R2": 0.760753252472756,
+   "Model": "Huber (\u03b5=1.35)",
+   "Features": "encoded",
+   "Target": "cnt",
+   "neg. forecasts %": 0.6616800920598389,
+   "alpha": NaN,
+   "cov95_all": NaN,
+   "cov95_peak": NaN
+  },
+  {
+   "RMSE": 74.82203062004568,
+   "MAE": 46.240718661778125,
+   "R2": 0.8848400139441982,
+   "Model": "Huber (\u03b5=1.35)",
+   "Features": "encoded",
+   "Target": "log1p(cnt)",
+   "neg. forecasts %": 0.0,
+   "alpha": NaN,
+   "cov95_all": NaN,
+   "cov95_peak": NaN
+  },
+  {
+   "RMSE": 104.94949495688839,
+   "MAE": 78.17113622320475,
+   "R2": 0.7734295179664235,
+   "Model": "Bayesian linear (evidence)",
+   "Features": "encoded",
+   "Target": "cnt",
+   "neg. forecasts %": 0.805523590333717,
+   "alpha": NaN,
+   "cov95_all": 0.8489643268124281,
+   "cov95_peak": 0.5172413793103449
+  },
+  {
+   "RMSE": 72.63547841335748,
+   "MAE": 44.75277906064161,
+   "R2": 0.8914723934243405,
+   "Model": "Bayesian linear (evidence)",
+   "Features": "encoded",
+   "Target": "log1p(cnt)",
+   "neg. forecasts %": 0.0,
+   "alpha": NaN,
+   "cov95_all": 0.9312428078250863,
+   "cov95_peak": 0.9413793103448276
+  }
+ ],
+ "classification": [
+  {
+   "Model": "LDA",
+   "Family": "Generative",
+   "Features": "raw",
+   "Accuracy": 0.8314154200230149,
+   "Precision": 0.8519503546099291,
+   "Recall": 0.8840846366145354,
+   "F1": 0.8677200902934538,
+   "ROC-AUC": 0.8846170423536361,
+   "fit+predict s": 0.012799739837646484
+  },
+  {
+   "Model": "LDA",
+   "Family": "Generative",
+   "Features": "encoded",
+   "Accuracy": 0.9079401611047181,
+   "Precision": 0.921747042766151,
+   "Recall": 0.9319227230910764,
+   "F1": 0.9268069533394327,
+   "ROC-AUC": 0.9703792339857864,
+   "fit+predict s": 0.05534505844116211
+  },
+  {
+   "Model": "Gaussian Naive Bayes",
+   "Family": "Generative",
+   "Features": "raw",
+   "Accuracy": 0.8009205983889528,
+   "Precision": 0.9014084507042254,
+   "Recall": 0.765409383624655,
+   "F1": 0.8278606965174129,
+   "ROC-AUC": 0.8912563927550425,
+   "fit+predict s": 0.006224632263183594
+  },
+  {
+   "Model": "Gaussian Naive Bayes",
+   "Family": "Generative",
+   "Features": "encoded",
+   "Accuracy": 0.8472382048331415,
+   "Precision": 0.8197742312183729,
+   "Recall": 0.968721251149954,
+   "F1": 0.888045540796964,
+   "ROC-AUC": 0.8403584747547118,
+   "fit+predict s": 0.016026973724365234
+  },
+  {
+   "Model": "Logistic regression (L2)",
+   "Family": "Discriminative",
+   "Features": "raw",
+   "Accuracy": 0.8239355581127733,
+   "Precision": 0.8287037037037037,
+   "Recall": 0.905703771849126,
+   "F1": 0.8654945054945055,
+   "ROC-AUC": 0.8863728860983809,
+   "fit+predict s": 0.0216827392578125
+  },
+  {
+   "Model": "Logistic regression (L2)",
+   "Family": "Discriminative",
+   "Features": "encoded",
+   "Accuracy": 0.9254890678941312,
+   "Precision": 0.9107679107679107,
+   "Recall": 0.9765409383624655,
+   "F1": 0.9425083240843507,
+   "ROC-AUC": 0.9757128301657488,
+   "fit+predict s": 0.3632068634033203
+  },
+  {
+   "Model": "Bayesian logistic (Laplace)",
+   "Family": "Discriminative + Bayes",
+   "Features": "raw",
+   "Accuracy": 0.8239355581127733,
+   "Precision": 0.8287037037037037,
+   "Recall": 0.905703771849126,
+   "F1": 0.8654945054945055,
+   "ROC-AUC": 0.8864029156191662,
+   "fit+predict s": 0.01694464683532715
+  },
+  {
+   "Model": "Bayesian logistic (Laplace)",
+   "Family": "Discriminative + Bayes",
+   "Features": "encoded",
+   "Accuracy": 0.9257767548906789,
+   "Precision": 0.9111587982832619,
+   "Recall": 0.9765409383624655,
+   "F1": 0.9427175843694494,
+   "ROC-AUC": 0.9748946140464674,
+   "fit+predict s": 0.09798812866210938
+  },
+  {
+   "Model": "SVM linear kernel",
+   "Family": "Max-margin",
+   "Features": "raw",
+   "Accuracy": 0.8340046029919448,
+   "Precision": 0.830095080611823,
+   "Recall": 0.9236430542778289,
+   "F1": 0.8743740474635314,
+   "ROC-AUC": 0.8832024752804051,
+   "fit+predict s": 13.184807538986206
+  },
+  {
+   "Model": "SVM linear kernel",
+   "Family": "Max-margin",
+   "Features": "encoded",
+   "Accuracy": 0.9243383199079401,
+   "Precision": 0.9092077087794432,
+   "Recall": 0.9765409383624655,
+   "F1": 0.941672211133289,
+   "ROC-AUC": 0.9748656443911214,
+   "fit+predict s": 13.758511781692505
+  },
+  {
+   "Model": "SVM RBF kernel",
+   "Family": "Max-margin",
+   "Features": "raw",
+   "Accuracy": 0.8731300345224395,
+   "Precision": 0.9606592238171185,
+   "Recall": 0.8311867525298988,
+   "F1": 0.891245376078915,
+   "ROC-AUC": 0.9609287671503892,
+   "fit+predict s": 3.408027172088623
+  },
+  {
+   "Model": "SVM RBF kernel",
+   "Family": "Max-margin",
+   "Features": "encoded",
+   "Accuracy": 0.9321058688147296,
+   "Precision": 0.9325892857142857,
+   "Recall": 0.9609015639374425,
+   "F1": 0.9465337562301767,
+   "ROC-AUC": 0.9783861640926067,
+   "fit+predict s": 3.7833945751190186
+  }
+ ],
+ "verification": [
+  {
+   "Area": "Data",
+   "Claim in existing report/PPT": "hourly rows",
+   "Claimed": 17379.0,
+   "Recomputed": 17379.0,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Data",
+   "Claim in existing report/PPT": "total rentals (millions)",
+   "Claimed": 3.29,
+   "Recomputed": 3.293,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Data",
+   "Claim in existing report/PPT": "registered share",
+   "Claimed": 0.81,
+   "Recomputed": 0.812,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Split",
+   "Claim in existing report/PPT": "train hours",
+   "Claimed": 13903.0,
+   "Recomputed": 13903.0,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Split",
+   "Claim in existing report/PPT": "test hours",
+   "Claimed": 3476.0,
+   "Recomputed": 3476.0,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Split",
+   "Claim in existing report/PPT": "high-demand threshold (training median)",
+   "Claimed": 130.0,
+   "Recomputed": 130.0,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Split",
+   "Claim in existing report/PPT": "test share of high-demand hours",
+   "Claimed": 0.625,
+   "Recomputed": 0.6254,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Split",
+   "Claim in existing report/PPT": "train share of high-demand hours",
+   "Claimed": 0.5,
+   "Recomputed": 0.5,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Dist.",
+   "Claim in existing report/PPT": "mean cnt",
+   "Claimed": 189.5,
+   "Recomputed": 189.463,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Dist.",
+   "Claim in existing report/PPT": "median cnt",
+   "Claimed": 142.0,
+   "Recomputed": 142.0,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Dist.",
+   "Claim in existing report/PPT": "standard deviation",
+   "Claimed": 181.4,
+   "Recomputed": 181.388,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Dist.",
+   "Claim in existing report/PPT": "Q1",
+   "Claimed": 40.0,
+   "Recomputed": 40.0,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Dist.",
+   "Claim in existing report/PPT": "Q3",
+   "Claimed": 281.0,
+   "Recomputed": 281.0,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Dist.",
+   "Claim in existing report/PPT": "99th percentile",
+   "Claimed": 782.0,
+   "Recomputed": 782.22,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Dist.",
+   "Claim in existing report/PPT": "maximum",
+   "Claimed": 977.0,
+   "Recomputed": 977.0,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Dist.",
+   "Claim in existing report/PPT": "skewness",
+   "Claimed": 1.28,
+   "Recomputed": 1.277,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Dist.",
+   "Claim in existing report/PPT": "variance / mean",
+   "Claimed": 174.0,
+   "Recomputed": 173.656,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Bayes",
+   "Claim in existing report/PPT": "P(C)",
+   "Claimed": 0.657,
+   "Recomputed": 0.6567,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Bayes",
+   "Claim in existing report/PPT": "P(H)",
+   "Claimed": 0.525,
+   "Recomputed": 0.5248,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Bayes",
+   "Claim in existing report/PPT": "P(C|H)",
+   "Claimed": 0.704,
+   "Recomputed": 0.7035,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Bayes",
+   "Claim in existing report/PPT": "P(H|C)",
+   "Claimed": 0.562,
+   "Recomputed": 0.5622,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Bayes",
+   "Claim in existing report/PPT": "P(H | mist/cloudy)",
+   "Claimed": 0.504,
+   "Recomputed": 0.5044,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Bayes",
+   "Claim in existing report/PPT": "P(H | light rain/snow)",
+   "Claimed": 0.29,
+   "Recomputed": 0.2896,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Expect.",
+   "Claim in existing report/PPT": "E[cnt | spring (season 1)]",
+   "Claimed": 111.1,
+   "Recomputed": 111.115,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Expect.",
+   "Claim in existing report/PPT": "E[cnt | fall (season 3)]",
+   "Claimed": 236.0,
+   "Recomputed": 236.016,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Expect.",
+   "Claim in existing report/PPT": "E[cnt | 2011]",
+   "Claimed": 143.8,
+   "Recomputed": 143.794,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Expect.",
+   "Claim in existing report/PPT": "E[cnt | 2012]",
+   "Claimed": 234.7,
+   "Recomputed": 234.666,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Expect.",
+   "Claim in existing report/PPT": "E[cnt | clear]",
+   "Claimed": 204.9,
+   "Recomputed": 204.869,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Expect.",
+   "Claim in existing report/PPT": "E[cnt | mist]",
+   "Claimed": 175.2,
+   "Recomputed": 175.165,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Expect.",
+   "Claim in existing report/PPT": "E[cnt | light rain]",
+   "Claimed": 111.6,
+   "Recomputed": 111.579,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Corr.",
+   "Claim in existing report/PPT": "corr(cnt, temp)",
+   "Claimed": 0.405,
+   "Recomputed": 0.4048,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Corr.",
+   "Claim in existing report/PPT": "corr(cnt, hum)",
+   "Claimed": -0.323,
+   "Recomputed": -0.3229,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Corr.",
+   "Claim in existing report/PPT": "corr(cnt, windspeed)",
+   "Claimed": 0.093,
+   "Recomputed": 0.0932,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Corr.",
+   "Claim in existing report/PPT": "corr(temp, atemp)",
+   "Claimed": 0.988,
+   "Recomputed": 0.9877,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Indep.",
+   "Claim in existing report/PPT": "\u03c7\u00b2 weather \u00d7 demand",
+   "Claimed": 386.6,
+   "Recomputed": 386.574,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Indep.",
+   "Claim in existing report/PPT": "Cram\u00e9r's V workingday (pooled)",
+   "Claimed": 0.068,
+   "Recomputed": 0.068,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Cond.",
+   "Claim in existing report/PPT": "hours with significant dependence",
+   "Claimed": 18.0,
+   "Recomputed": 18.0,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Cond.",
+   "Claim in existing report/PPT": "Cram\u00e9r's V at 08:00",
+   "Claimed": 0.73,
+   "Recomputed": 0.734,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Cond.",
+   "Claim in existing report/PPT": "mean cnt 08:00 working day",
+   "Claimed": 477.0,
+   "Recomputed": 477.006,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Cond.",
+   "Claim in existing report/PPT": "mean cnt 08:00 weekend",
+   "Claimed": 106.0,
+   "Recomputed": 105.654,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Cond.",
+   "Claim in existing report/PPT": "mean cnt 13:00 weekend",
+   "Claimed": 373.0,
+   "Recomputed": 372.732,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Cond.",
+   "Claim in existing report/PPT": "mean cnt 13:00 working day",
+   "Claimed": 198.0,
+   "Recomputed": 198.43,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Poly.",
+   "Claim in existing report/PPT": "best degree (random 70/30, seed 42)",
+   "Claimed": 3.0,
+   "Recomputed": 3.0,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Poly.",
+   "Claim in existing report/PPT": "held-out RMSE at best degree",
+   "Claimed": 1519.0,
+   "Recomputed": 1519.494,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Poly.",
+   "Claim in existing report/PPT": "peak temperature \u00b0C (cubic fitted on all days)",
+   "Claimed": 27.4,
+   "Recomputed": 27.405,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Poly.",
+   "Claim in existing report/PPT": "held-out R\u00b2 of cubic",
+   "Claimed": 0.42,
+   "Recomputed": 0.42,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Poly.",
+   "Claim in existing report/PPT": "training RMSE at M = 1",
+   "Claimed": 1480.0,
+   "Recomputed": 1480.049,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Poly.",
+   "Claim in existing report/PPT": "training RMSE at M = 9",
+   "Claimed": 1367.0,
+   "Recomputed": 1359.435,
+   "Match?": "DIFFERS",
+   "Action": "Correct"
+  },
+  {
+   "Area": "Features",
+   "Claim in existing report/PPT": "number of encoded features",
+   "Claimed": 77.0,
+   "Recomputed": 77.0,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Features",
+   "Claim in existing report/PPT": "number of raw features",
+   "Claimed": 12.0,
+   "Recomputed": 12.0,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "OLS raw, cnt: R\u00b2",
+   "Claimed": 0.309,
+   "Recomputed": 0.309,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "OLS raw, cnt: RMSE",
+   "Claimed": 183.3,
+   "Recomputed": 183.278,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "OLS encoded, cnt: R\u00b2",
+   "Claimed": 0.774,
+   "Recomputed": 0.7738,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "OLS encoded, cnt: RMSE",
+   "Claimed": 104.9,
+   "Recomputed": 104.858,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "OLS encoded, cnt: MAE",
+   "Claimed": 78.1,
+   "Recomputed": 78.096,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "OLS encoded, log: R\u00b2",
+   "Claimed": 0.891,
+   "Recomputed": 0.8911,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "OLS encoded, log: RMSE",
+   "Claimed": 72.7,
+   "Recomputed": 72.748,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "OLS encoded, log: MAE",
+   "Claimed": 44.8,
+   "Recomputed": 44.801,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "OLS raw, log: R\u00b2",
+   "Claimed": 0.152,
+   "Recomputed": 0.152,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "negative forecasts, cnt target (%)",
+   "Claimed": 0.8,
+   "Recomputed": 0.806,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "negative forecasts, log target (%)",
+   "Claimed": 0.0,
+   "Recomputed": 0.0,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "Huber cnt: RMSE",
+   "Claimed": 107.8,
+   "Recomputed": 107.845,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "Huber cnt: R\u00b2",
+   "Claimed": 0.761,
+   "Recomputed": 0.7608,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "Huber log: RMSE",
+   "Claimed": 74.8,
+   "Recomputed": 74.822,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "Huber log: R\u00b2",
+   "Claimed": 0.885,
+   "Recomputed": 0.8848,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "ridge \u03b1 selected, cnt target",
+   "Claimed": 0.001,
+   "Recomputed": 100.0,
+   "Match?": "DIFFERS",
+   "Action": "Correct"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "ridge \u03b1 selected, log target",
+   "Claimed": 316.0,
+   "Recomputed": 316.228,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "ridge cnt: RMSE",
+   "Claimed": 104.9,
+   "Recomputed": 105.661,
+   "Match?": "DIFFERS",
+   "Action": "Correct"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "ridge cnt: MAE",
+   "Claimed": 78.1,
+   "Recomputed": 78.708,
+   "Match?": "DIFFERS",
+   "Action": "Correct"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "ridge log: RMSE",
+   "Claimed": 72.7,
+   "Recomputed": 72.743,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "ridge log: MAE",
+   "Claimed": 46.0,
+   "Recomputed": 45.993,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "Bayesian lin. cnt: RMSE",
+   "Claimed": 104.9,
+   "Recomputed": 104.949,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "Bayesian lin. cnt: R\u00b2",
+   "Claimed": 0.773,
+   "Recomputed": 0.7734,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "Bayesian lin. log: RMSE",
+   "Claimed": 72.6,
+   "Recomputed": 72.635,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "Bayesian lin. log: R\u00b2",
+   "Claimed": 0.891,
+   "Recomputed": 0.8915,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "w_temp at \u03b1 = 0.001",
+   "Claimed": 25.68,
+   "Recomputed": 25.684,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "w_atemp at \u03b1 = 0.001",
+   "Claimed": 14.88,
+   "Recomputed": 14.879,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "w_temp at \u03b1 = 1000",
+   "Claimed": 23.88,
+   "Recomputed": 23.875,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Regr.",
+   "Claim in existing report/PPT": "w_atemp at \u03b1 = 1000",
+   "Claimed": 22.74,
+   "Recomputed": 22.737,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Interval",
+   "Claim in existing report/PPT": "95% coverage overall, cnt target",
+   "Claimed": 0.849,
+   "Recomputed": 0.849,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Interval",
+   "Claim in existing report/PPT": "95% coverage peak hours, cnt target",
+   "Claimed": 0.517,
+   "Recomputed": 0.5172,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Interval",
+   "Claim in existing report/PPT": "95% coverage overall, log target",
+   "Claimed": 0.931,
+   "Recomputed": 0.9312,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Interval",
+   "Claim in existing report/PPT": "95% coverage peak hours, log target",
+   "Claimed": 0.941,
+   "Recomputed": 0.9414,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Errors",
+   "Claim in existing report/PPT": "ridge-log MAE 16\u201319 h",
+   "Claimed": 85.0,
+   "Recomputed": 85.043,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Errors",
+   "Claim in existing report/PPT": "ridge-log MAE at night (00\u201305 h)",
+   "Claimed": 9.9,
+   "Recomputed": 9.893,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Classif.",
+   "Claim in existing report/PPT": "LDA enc: accuracy",
+   "Claimed": 0.908,
+   "Recomputed": 0.9079,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Classif.",
+   "Claim in existing report/PPT": "LDA enc: AUC",
+   "Claimed": 0.97,
+   "Recomputed": 0.9704,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Classif.",
+   "Claim in existing report/PPT": "Naive Bayes enc: accuracy",
+   "Claimed": 0.847,
+   "Recomputed": 0.8472,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Classif.",
+   "Claim in existing report/PPT": "Naive Bayes enc: AUC",
+   "Claimed": 0.84,
+   "Recomputed": 0.8404,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Classif.",
+   "Claim in existing report/PPT": "Logistic enc: accuracy",
+   "Claimed": 0.925,
+   "Recomputed": 0.9255,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Classif.",
+   "Claim in existing report/PPT": "Logistic enc: AUC",
+   "Claimed": 0.976,
+   "Recomputed": 0.9757,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Classif.",
+   "Claim in existing report/PPT": "Bayes-logistic enc: accuracy",
+   "Claimed": 0.926,
+   "Recomputed": 0.9258,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Classif.",
+   "Claim in existing report/PPT": "Bayes-logistic enc: AUC",
+   "Claimed": 0.975,
+   "Recomputed": 0.9749,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Classif.",
+   "Claim in existing report/PPT": "Linear SVM raw: accuracy",
+   "Claimed": 0.828,
+   "Recomputed": 0.834,
+   "Match?": "DIFFERS",
+   "Action": "Correct"
+  },
+  {
+   "Area": "Classif.",
+   "Claim in existing report/PPT": "Linear SVM raw: AUC",
+   "Claimed": 0.886,
+   "Recomputed": 0.8832,
+   "Match?": "DIFFERS",
+   "Action": "Correct"
+  },
+  {
+   "Area": "Classif.",
+   "Claim in existing report/PPT": "RBF SVM raw: accuracy",
+   "Claimed": 0.873,
+   "Recomputed": 0.8731,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Classif.",
+   "Claim in existing report/PPT": "RBF SVM raw: AUC",
+   "Claimed": 0.961,
+   "Recomputed": 0.9609,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Classif.",
+   "Claim in existing report/PPT": "Linear SVM enc: accuracy",
+   "Claimed": 0.924,
+   "Recomputed": 0.9243,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Classif.",
+   "Claim in existing report/PPT": "Linear SVM enc: AUC",
+   "Claimed": 0.975,
+   "Recomputed": 0.9749,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Classif.",
+   "Claim in existing report/PPT": "RBF SVM enc: accuracy",
+   "Claimed": 0.932,
+   "Recomputed": 0.9321,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Classif.",
+   "Claim in existing report/PPT": "RBF SVM enc: F1",
+   "Claimed": 0.947,
+   "Recomputed": 0.9465,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Classif.",
+   "Claim in existing report/PPT": "RBF SVM enc: AUC",
+   "Claimed": 0.978,
+   "Recomputed": 0.9784,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Laplace",
+   "Claim in existing report/PPT": "mean |p_Laplace \u2212 p_MAP|",
+   "Claimed": 0.006,
+   "Recomputed": 0.0057,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Laplace",
+   "Claim in existing report/PPT": "max |p_Laplace \u2212 p_MAP|",
+   "Claimed": 0.08,
+   "Recomputed": 0.078,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Laplace",
+   "Claim in existing report/PPT": "accuracy of Laplace model",
+   "Claimed": 0.926,
+   "Recomputed": 0.9258,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Laplace",
+   "Claim in existing report/PPT": "share of unsure hours (0.4\u20130.6)",
+   "Claimed": 0.024,
+   "Recomputed": 0.0245,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Laplace",
+   "Claim in existing report/PPT": "error rate among unsure hours",
+   "Claimed": 0.35,
+   "Recomputed": 0.353,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Laplace",
+   "Claim in existing report/PPT": "share of confident hours",
+   "Claimed": 0.858,
+   "Recomputed": 0.8579,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Laplace",
+   "Claim in existing report/PPT": "error rate among confident hours",
+   "Claimed": 0.035,
+   "Recomputed": 0.0352,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Laplace",
+   "Claim in existing report/PPT": "classifier accuracy > 40 rentals from threshold",
+   "Claimed": 0.98,
+   "Recomputed": 0.977,
+   "Match?": "Match",
+   "Action": "Keep"
+  },
+  {
+   "Area": "Laplace",
+   "Claim in existing report/PPT": "classifier accuracy within \u00b140 of threshold",
+   "Claimed": 0.65,
+   "Recomputed": 0.651,
+   "Match?": "Match",
+   "Action": "Keep"
+  }
+ ],
+ "poly_random": [
+  {
+   "degree": 1,
+   "train RMSE": 1480.0493996129123,
+   "held-out RMSE": 1569.0325977977382,
+   "train R2": 0.39802026983888183,
+   "held-out R2": 0.3812806529642484
+  },
+  {
+   "degree": 2,
+   "train RMSE": 1384.3977044168016,
+   "held-out RMSE": 1539.4432498698734,
+   "train R2": 0.47331471265899205,
+   "held-out R2": 0.4043966513430527
+  },
+  {
+   "degree": 3,
+   "train RMSE": 1376.265296322285,
+   "held-out RMSE": 1519.4937233245282,
+   "train R2": 0.4794843836412348,
+   "held-out R2": 0.41973338535095983
+  },
+  {
+   "degree": 4,
+   "train RMSE": 1374.3027261024415,
+   "held-out RMSE": 1528.1879948097085,
+   "train R2": 0.4809678477384699,
+   "held-out R2": 0.413074024163645
+  },
+  {
+   "degree": 5,
+   "train RMSE": 1374.26531538047,
+   "held-out RMSE": 1527.8457743121328,
+   "train R2": 0.4809961051273085,
+   "held-out R2": 0.4133368656598717
+  },
+  {
+   "degree": 6,
+   "train RMSE": 1374.0578431056226,
+   "held-out RMSE": 1529.2932292124622,
+   "train R2": 0.4811528009114451,
+   "held-out R2": 0.4122247499126742
+  },
+  {
+   "degree": 7,
+   "train RMSE": 1369.25956189742,
+   "held-out RMSE": 1534.0182250204625,
+   "train R2": 0.48477015649181576,
+   "held-out R2": 0.4085870878918727
+  },
+  {
+   "degree": 8,
+   "train RMSE": 1366.0629425827894,
+   "held-out RMSE": 1536.1133751904113,
+   "train R2": 0.4871730189027299,
+   "held-out R2": 0.40697049035882105
+  },
+  {
+   "degree": 9,
+   "train RMSE": 1359.4354292206915,
+   "held-out RMSE": 1529.6688734385307,
+   "train R2": 0.4921369527448852,
+   "held-out R2": 0.41193596095860263
+  }
+ ],
+ "poly_chrono": [
+  {
+   "degree": 1,
+   "train RMSE": 1242.0653329586676,
+   "held-out RMSE": 2259.690249645434,
+   "train R2": 0.3857190536117491,
+   "held-out R2": -0.8724523530871662
+  },
+  {
+   "degree": 2,
+   "train RMSE": 1150.5412119004695,
+   "held-out RMSE": 2269.3600669921875,
+   "train R2": 0.4729127355527518,
+   "held-out R2": -0.8885120878513217
+  },
+  {
+   "degree": 3,
+   "train RMSE": 1125.592830432126,
+   "held-out RMSE": 2287.5712525320514,
+   "train R2": 0.49552366287019545,
+   "held-out R2": -0.9189436084850988
+  },
+  {
+   "degree": 4,
+   "train RMSE": 1124.5522089482376,
+   "held-out RMSE": 2290.4413945985434,
+   "train R2": 0.4964560182138301,
+   "held-out R2": -0.9237619029077944
+  },
+  {
+   "degree": 5,
+   "train RMSE": 1123.0072306334184,
+   "held-out RMSE": 2300.1544770923583,
+   "train R2": 0.49783866655812803,
+   "held-out R2": -0.9401127060952712
+  },
+  {
+   "degree": 6,
+   "train RMSE": 1123.0055375207762,
+   "held-out RMSE": 2300.2283853179206,
+   "train R2": 0.4978401807337056,
+   "held-out R2": -0.940237386930949
+  },
+  {
+   "degree": 7,
+   "train RMSE": 1119.7237368274978,
+   "held-out RMSE": 2298.0001469198223,
+   "train R2": 0.5007708527547761,
+   "held-out R2": -0.9364801796275897
+  },
+  {
+   "degree": 8,
+   "train RMSE": 1118.5533478032896,
+   "held-out RMSE": 2296.2279381448193,
+   "train R2": 0.5018139438853818,
+   "held-out R2": -0.9334945193716835
+  },
+  {
+   "degree": 9,
+   "train RMSE": 1115.3530085242437,
+   "held-out RMSE": 2286.988034938939,
+   "train R2": 0.5046606271585421,
+   "held-out R2": -0.9179652616852187
+  }
+ ],
+ "poly_stability": [
+  {
+   "degree": 1,
+   "times best (of 200 splits)": 0,
+   "median held-out RMSE": 1508.8209296154805
+  },
+  {
+   "degree": 2,
+   "times best (of 200 splits)": 11,
+   "median held-out RMSE": 1434.398834031676
+  },
+  {
+   "degree": 3,
+   "times best (of 200 splits)": 80,
+   "median held-out RMSE": 1422.0363474721785
+  },
+  {
+   "degree": 4,
+   "times best (of 200 splits)": 3,
+   "median held-out RMSE": 1424.7553417522236
+  },
+  {
+   "degree": 5,
+   "times best (of 200 splits)": 10,
+   "median held-out RMSE": 1425.6690447415463
+  },
+  {
+   "degree": 6,
+   "times best (of 200 splits)": 1,
+   "median held-out RMSE": 1427.3763682279764
+  },
+  {
+   "degree": 7,
+   "times best (of 200 splits)": 5,
+   "median held-out RMSE": 1439.3001266691338
+  },
+  {
+   "degree": 8,
+   "times best (of 200 splits)": 8,
+   "median held-out RMSE": 1441.0031780684344
+  },
+  {
+   "degree": 9,
+   "times best (of 200 splits)": 82,
+   "median held-out RMSE": 1444.7852376535966
+  }
+ ],
+ "per_hour": [
+  {
+   "hr": 0,
+   "n": 726,
+   "P(H|working)": 0.004032258064516129,
+   "P(H|non-working)": 0.20869565217391303,
+   "diff": -0.2046633941093969,
+   "chi2": 102.63837727910237,
+   "p": 4.022646327947552e-24,
+   "V": 0.37599890334357094,
+   "mean cnt working": 36.78629032258065,
+   "mean cnt non-working": 90.8,
+   "significant (p<0.05)": true
+  },
+  {
+   "hr": 1,
+   "n": 724,
+   "P(H|working)": 0.0,
+   "P(H|non-working)": 0.043478260869565216,
+   "diff": -0.043478260869565216,
+   "chi2": 21.779076848130558,
+   "p": 3.0591814046744883e-06,
+   "V": 0.17344047352487804,
+   "mean cnt working": 16.55263157894737,
+   "mean cnt non-working": 69.50869565217391,
+   "significant (p<0.05)": true
+  },
+  {
+   "hr": 2,
+   "n": 715,
+   "P(H|working)": 0.0,
+   "P(H|non-working)": 0.0043859649122807015,
+   "diff": -0.0043859649122807015,
+   "chi2": 2.1389564597768933,
+   "p": 0.14359954392838026,
+   "V": 0.05469504087384394,
+   "mean cnt working": 8.683778234086242,
+   "mean cnt non-working": 53.171052631578945,
+   "significant (p<0.05)": false
+  },
+  {
+   "hr": 3,
+   "n": 697,
+   "P(H|working)": 0.0,
+   "P(H|non-working)": 0.0,
+   "diff": 0.0,
+   "chi2": NaN,
+   "p": NaN,
+   "V": NaN,
+   "mean cnt working": 4.9425531914893615,
+   "mean cnt non-working": 25.77533039647577,
+   "significant (p<0.05)": false
+  },
+  {
+   "hr": 4,
+   "n": 697,
+   "P(H|working)": 0.0,
+   "P(H|non-working)": 0.0,
+   "diff": 0.0,
+   "chi2": NaN,
+   "p": NaN,
+   "V": NaN,
+   "mean cnt working": 5.4297872340425535,
+   "mean cnt non-working": 8.26431718061674,
+   "significant (p<0.05)": false
+  },
+  {
+   "hr": 5,
+   "n": 717,
+   "P(H|working)": 0.0,
+   "P(H|non-working)": 0.0,
+   "diff": 0.0,
+   "chi2": NaN,
+   "p": NaN,
+   "V": NaN,
+   "mean cnt working": 24.913131313131313,
+   "mean cnt non-working": 8.68918918918919,
+   "significant (p<0.05)": false
+  },
+  {
+   "hr": 6,
+   "n": 725,
+   "P(H|working)": 0.2560483870967742,
+   "P(H|non-working)": 0.004366812227074236,
+   "diff": 0.25168157486969994,
+   "chi2": 68.26116724351027,
+   "p": 1.4321369753298534e-16,
+   "V": 0.3068441528349199,
+   "mean cnt working": 102.5,
+   "mean cnt non-working": 18.74235807860262,
+   "significant (p<0.05)": true
+  },
+  {
+   "hr": 7,
+   "n": 727,
+   "P(H|working)": 0.8326612903225806,
+   "P(H|non-working)": 0.017316017316017316,
+   "diff": 0.8153452730065633,
+   "chi2": 428.36446215589933,
+   "p": 3.688623019324741e-95,
+   "V": 0.7676080339271585,
+   "mean cnt working": 290.61290322580646,
+   "mean cnt non-working": 43.40692640692641,
+   "significant (p<0.05)": true
+  },
+  {
+   "hr": 8,
+   "n": 727,
+   "P(H|working)": 0.967741935483871,
+   "P(H|non-working)": 0.2857142857142857,
+   "diff": 0.6820276497695853,
+   "chi2": 392.0674723092423,
+   "p": 2.9362230846709773e-87,
+   "V": 0.7343670812706533,
+   "mean cnt working": 477.00604838709677,
+   "mean cnt non-working": 105.65367965367966,
+   "significant (p<0.05)": true
+  },
+  {
+   "hr": 9,
+   "n": 727,
+   "P(H|working)": 0.8971774193548387,
+   "P(H|non-working)": 0.6320346320346321,
+   "diff": 0.2651427873202067,
+   "chi2": 72.85532720056243,
+   "p": 1.395105246511826e-17,
+   "V": 0.31656540401851613,
+   "mean cnt working": 241.51814516129033,
+   "mean cnt non-working": 171.62337662337663,
+   "significant (p<0.05)": true
+  },
+  {
+   "hr": 10,
+   "n": 727,
+   "P(H|working)": 0.5241935483870968,
+   "P(H|non-working)": 0.7835497835497836,
+   "diff": -0.2593562351626868,
+   "chi2": 44.423915177969896,
+   "p": 2.644369579664603e-11,
+   "V": 0.2471958697955431,
+   "mean cnt working": 135.36693548387098,
+   "mean cnt non-working": 255.9090909090909,
+   "significant (p<0.05)": true
+  },
+  {
+   "hr": 11,
+   "n": 727,
+   "P(H|working)": 0.6350806451612904,
+   "P(H|non-working)": 0.8571428571428571,
+   "diff": -0.22206221198156673,
+   "chi2": 37.4150432750175,
+   "p": 9.54828049734325e-10,
+   "V": 0.2268589514921135,
+   "mean cnt working": 158.2298387096774,
+   "mean cnt non-working": 315.31601731601734,
+   "significant (p<0.05)": true
+  },
+  {
+   "hr": 12,
+   "n": 728,
+   "P(H|working)": 0.7766599597585513,
+   "P(H|non-working)": 0.8874458874458875,
+   "diff": -0.1107859276873362,
+   "chi2": 12.669541467237346,
+   "p": 0.00037166066826724265,
+   "V": 0.13192125037745134,
+   "mean cnt working": 200.8209255533199,
+   "mean cnt non-working": 366.2597402597403,
+   "significant (p<0.05)": true
+  },
+  {
+   "hr": 13,
+   "n": 729,
+   "P(H|working)": 0.7650602409638554,
+   "P(H|non-working)": 0.8961038961038961,
+   "diff": -0.13104365514004068,
+   "chi2": 17.370183586639726,
+   "p": 3.0761400345865806e-05,
+   "V": 0.15436130450132948,
+   "mean cnt working": 198.429718875502,
+   "mean cnt non-working": 372.73160173160176,
+   "significant (p<0.05)": true
+  },
+  {
+   "hr": 14,
+   "n": 729,
+   "P(H|working)": 0.7389558232931727,
+   "P(H|non-working)": 0.8917748917748918,
+   "diff": -0.1528190684817191,
+   "chi2": 22.013056920640498,
+   "p": 2.7080196768182977e-06,
+   "V": 0.17377064539940193,
+   "mean cnt working": 183.5722891566265,
+   "mean cnt non-working": 364.64502164502164,
+   "significant (p<0.05)": true
+  },
+  {
+   "hr": 15,
+   "n": 729,
+   "P(H|working)": 0.7590361445783133,
+   "P(H|non-working)": 0.8917748917748918,
+   "diff": -0.13273874719657852,
+   "chi2": 17.449517810643464,
+   "p": 2.9503911616339198e-05,
+   "V": 0.154713407380806,
+   "mean cnt working": 201.33132530120483,
+   "mean cnt non-working": 358.8138528138528,
+   "significant (p<0.05)": true
+  },
+  {
+   "hr": 16,
+   "n": 730,
+   "P(H|working)": 0.843687374749499,
+   "P(H|non-working)": 0.8874458874458875,
+   "diff": -0.04375851269638853,
+   "chi2": 2.474872431334877,
+   "p": 0.11567882839175918,
+   "V": 0.058225734922867665,
+   "mean cnt working": 293.12224448897797,
+   "mean cnt non-working": 352.72727272727275,
+   "significant (p<0.05)": false
+  },
+  {
+   "hr": 17,
+   "n": 730,
+   "P(H|working)": 0.969939879759519,
+   "P(H|non-working)": 0.8268398268398268,
+   "diff": 0.1431000529196922,
+   "chi2": 46.41394807338816,
+   "p": 9.573162039883178e-12,
+   "V": 0.2521522373199636,
+   "mean cnt working": 525.2905811623247,
+   "mean cnt non-working": 323.54978354978357,
+   "significant (p<0.05)": true
+  },
+  {
+   "hr": 18,
+   "n": 728,
+   "P(H|working)": 0.9658634538152611,
+   "P(H|non-working)": 0.8,
+   "diff": 0.16586345381526102,
+   "chi2": 54.75550294746237,
+   "p": 1.364964734390025e-13,
+   "V": 0.27425098532149517,
+   "mean cnt working": 492.2269076305221,
+   "mean cnt non-working": 281.05652173913046,
+   "significant (p<0.05)": true
+  },
+  {
+   "hr": 19,
+   "n": 728,
+   "P(H|working)": 0.8795180722891566,
+   "P(H|non-working)": 0.7260869565217392,
+   "diff": 0.15343111576741741,
+   "chi2": 26.378795349667694,
+   "p": 2.8060416482757875e-07,
+   "V": 0.19035390460086782,
+   "mean cnt working": 348.4016064257028,
+   "mean cnt non-working": 231.67391304347825,
+   "significant (p<0.05)": true
+  },
+  {
+   "hr": 20,
+   "n": 728,
+   "P(H|working)": 0.8012048192771084,
+   "P(H|non-working)": 0.591304347826087,
+   "diff": 0.20990047145102142,
+   "chi2": 35.579864936393726,
+   "p": 2.448049039490572e-09,
+   "V": 0.22107338339722102,
+   "mean cnt working": 249.71887550200802,
+   "mean cnt non-working": 174.7391304347826,
+   "significant (p<0.05)": true
+  },
+  {
+   "hr": 21,
+   "n": 728,
+   "P(H|working)": 0.7128514056224899,
+   "P(H|non-working)": 0.5173913043478261,
+   "diff": 0.19546010127466384,
+   "chi2": 26.460176617673866,
+   "p": 2.69027426807168e-07,
+   "V": 0.19064730906270017,
+   "mean cnt working": 186.2871485943775,
+   "mean cnt non-working": 142.0608695652174,
+   "significant (p<0.05)": true
+  },
+  {
+   "hr": 22,
+   "n": 728,
+   "P(H|working)": 0.5421686746987951,
+   "P(H|non-working)": 0.3782608695652174,
+   "diff": 0.16390780513357778,
+   "chi2": 16.91397568268538,
+   "p": 3.9112551201660386e-05,
+   "V": 0.15242533608495598,
+   "mean cnt working": 138.38955823293173,
+   "mean cnt non-working": 116.06086956521739,
+   "significant (p<0.05)": true
+  },
+  {
+   "hr": 23,
+   "n": 728,
+   "P(H|working)": 0.19678714859437751,
+   "P(H|non-working)": 0.2217391304347826,
+   "diff": -0.02495198184040509,
+   "chi2": 0.6017745507147362,
+   "p": 0.43790175449014557,
+   "V": 0.028750885096617867,
+   "mean cnt working": 88.70883534136546,
+   "mean cnt non-working": 85.9304347826087,
+   "significant (p<0.05)": false
+  }
+ ],
+ "coverage": [
+  {
+   "Target": "cnt",
+   "coverage overall": 0.8489643268124281,
+   "coverage peak hours (07,08,17,18)": 0.5172413793103449,
+   "coverage off-peak": 0.9154005524861878,
+   "mean interval width (rentals)": 278.6528348578597,
+   "mean width at peak": 278.6544006487451,
+   "nominal": 0.95
+  },
+  {
+   "Target": "log1p(cnt)",
+   "coverage overall": 0.9312428078250863,
+   "coverage peak hours (07,08,17,18)": 0.9413793103448276,
+   "coverage off-peak": 0.9292127071823204,
+   "mean interval width (rentals)": 410.4690878068365,
+   "mean width at peak": 790.7047883808036,
+   "nominal": 0.95
+  }
+ ],
+ "ridge_cv": [
+  {
+   "alpha": 0.001,
+   "CV RMSE (target cnt)": 93.36727115743528,
+   "CV RMSE (target log1p, log scale)": 0.5672269066282001
+  },
+  {
+   "alpha": 0.0031622776601683794,
+   "CV RMSE (target cnt)": 93.36728744199861,
+   "CV RMSE (target log1p, log scale)": 0.5672256316100779
+  },
+  {
+   "alpha": 0.01,
+   "CV RMSE (target cnt)": 93.36733883999679,
+   "CV RMSE (target log1p, log scale)": 0.5672215992743211
+  },
+  {
+   "alpha": 0.03162277660168379,
+   "CV RMSE (target cnt)": 93.36750039347461,
+   "CV RMSE (target log1p, log scale)": 0.5672088441772963
+  },
+  {
+   "alpha": 0.1,
+   "CV RMSE (target cnt)": 93.36800151643993,
+   "CV RMSE (target log1p, log scale)": 0.5671684720967154
+  },
+  {
+   "alpha": 0.31622776601683794,
+   "CV RMSE (target cnt)": 93.36949049239452,
+   "CV RMSE (target log1p, log scale)": 0.567040447432355
+  },
+  {
+   "alpha": 1.0,
+   "CV RMSE (target cnt)": 93.37329691021422,
+   "CV RMSE (target log1p, log scale)": 0.566632396898439
+  },
+  {
+   "alpha": 3.1622776601683795,
+   "CV RMSE (target cnt)": 93.3778136998533,
+   "CV RMSE (target log1p, log scale)": 0.5653199228597993
+  },
+  {
+   "alpha": 10.0,
+   "CV RMSE (target cnt)": 93.34824548055008,
+   "CV RMSE (target log1p, log scale)": 0.5611456459856483
+  },
+  {
+   "alpha": 31.622776601683793,
+   "CV RMSE (target cnt)": 93.17428653317153,
+   "CV RMSE (target log1p, log scale)": 0.5495794672441162
+  },
+  {
+   "alpha": 100.0,
+   "CV RMSE (target cnt)": 93.05604470447028,
+   "CV RMSE (target log1p, log scale)": 0.5278397263132146
+  },
+  {
+   "alpha": 316.2277660168379,
+   "CV RMSE (target cnt)": 94.3590323542745,
+   "CV RMSE (target log1p, log scale)": 0.5089834401798642
+  },
+  {
+   "alpha": 1000.0,
+   "CV RMSE (target cnt)": 99.68011609553635,
+   "CV RMSE (target log1p, log scale)": 0.5294954996438415
+  }
+ ],
+ "laplace_uncertainty": [
+  {
+   "index": "unsure 0.4 \u2264 p \u2264 0.6",
+   "share of test hours": 0.024453394706559262,
+   "error rate": 0.35294117647058826,
+   "hours": 85
+  },
+  {
+   "index": "confident p < 0.1 or p > 0.9",
+   "share of test hours": 0.8578826237054085,
+   "error rate": 0.035211267605633804,
+   "hours": 2982
+  },
+  {
+   "index": "in between",
+   "share of test hours": 0.11766398158803222,
+   "error rate": 0.30073349633251834,
+   "hours": 409
+  }
+ ],
+ "confusion": [
+  [
+   1151,
+   151
+  ],
+  [
+   85,
+   2089
+  ]
+ ]
+}

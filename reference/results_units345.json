@@ -1,0 +1,851 @@
+{
+ "excluded_days": {
+  "2011-01-27": 431,
+  "2012-10-29": 22,
+  "2012-12-26": 441
+ },
+ "kmeans_table": [
+  {
+   "K": 2,
+   "inertia J": 8725.9279,
+   "silhouette": 0.5044,
+   "Davies-Bouldin": 0.8404,
+   "Calinski-Harabasz": 727.676,
+   "ARI vs workingday": 0.9394
+  },
+  {
+   "K": 3,
+   "inertia J": 7914.2374,
+   "silhouette": 0.2393,
+   "Davies-Bouldin": 1.5813,
+   "Calinski-Harabasz": 437.7793,
+   "ARI vs workingday": 0.5189
+  },
+  {
+   "K": 4,
+   "inertia J": 7125.0422,
+   "silhouette": 0.2463,
+   "Davies-Bouldin": 1.3373,
+   "Calinski-Harabasz": 350.4633,
+   "ARI vs workingday": 0.5139
+  },
+  {
+   "K": 5,
+   "inertia J": 6619.7807,
+   "silhouette": 0.1662,
+   "Davies-Bouldin": 1.6864,
+   "Calinski-Harabasz": 296.3147,
+   "ARI vs workingday": 0.4355
+  },
+  {
+   "K": 6,
+   "inertia J": 6251.6492,
+   "silhouette": 0.1444,
+   "Davies-Bouldin": 1.7512,
+   "Calinski-Harabasz": 259.1666,
+   "ARI vs workingday": 0.3283
+  },
+  {
+   "K": 7,
+   "inertia J": 5934.8951,
+   "silhouette": 0.1547,
+   "Davies-Bouldin": 1.6617,
+   "Calinski-Harabasz": 233.5973,
+   "ARI vs workingday": 0.318
+  },
+  {
+   "K": 8,
+   "inertia J": 5695.3277,
+   "silhouette": 0.1369,
+   "Davies-Bouldin": 1.716,
+   "Calinski-Harabasz": 212.6857,
+   "ARI vs workingday": 0.2784
+  }
+ ],
+ "kmeans_mismatch": {
+  "n": 11,
+  "holidays": 3
+ },
+ "kmeans": {
+  "K": 2,
+  "sil": 0.5043961900543726,
+  "DB": 0.8403734183941931,
+  "ARI_workingday": 0.9394101176988118,
+  "sizes": [
+   236,
+   492
+  ],
+  "peak_hours": [
+   13,
+   17
+  ]
+ },
+ "gmm": {
+  "BIC_table": [
+   {
+    "K": 1,
+    "logL (own EM)": -8418.634,
+    "params": 35,
+    "BIC": 17067.929,
+    "EM iterations": 3
+   },
+   {
+    "K": 2,
+    "logL (own EM)": -7265.348,
+    "params": 71,
+    "BIC": 14998.607,
+    "EM iterations": 7
+   },
+   {
+    "K": 3,
+    "logL (own EM)": -6715.722,
+    "params": 107,
+    "BIC": 14136.606,
+    "EM iterations": 35
+   },
+   {
+    "K": 4,
+    "logL (own EM)": -6509.601,
+    "params": 143,
+    "BIC": 13961.615,
+    "EM iterations": 41
+   },
+   {
+    "K": 5,
+    "logL (own EM)": -6432.549,
+    "params": 179,
+    "BIC": 14044.762,
+    "EM iterations": 27
+   },
+   {
+    "K": 6,
+    "logL (own EM)": -6316.434,
+    "params": 215,
+    "BIC": 14049.783,
+    "EM iterations": 71
+   },
+   {
+    "K": 7,
+    "logL (own EM)": -6181.737,
+    "params": 251,
+    "BIC": 14017.639,
+    "EM iterations": 58
+   }
+  ],
+  "K_BIC": 4,
+  "em_monotone": true,
+  "em_max_drop": -0.0,
+  "sk_ll_K": -7265.349228198192,
+  "own_ll_K": -7265.347861166572,
+  "n_pc": 7,
+  "ARI_workingday": 0.9232674578816454,
+  "ARI_vs_kmeans": 0.9722824934357088,
+  "uncertain_days": 1
+ },
+ "hier_table": [
+  {
+   "dissimilarity": "euclidean",
+   "linkage": "single",
+   "cophenetic corr": 0.778,
+   "silhouette (cut at K)": 0.7277,
+   "ARI vs workingday": 0.0032,
+   "cluster sizes": "[727, 1]"
+  },
+  {
+   "dissimilarity": "euclidean",
+   "linkage": "complete",
+   "cophenetic corr": 0.7934,
+   "silhouette (cut at K)": 0.691,
+   "ARI vs workingday": 0.0095,
+   "cluster sizes": "[3, 725]"
+  },
+  {
+   "dissimilarity": "euclidean",
+   "linkage": "average",
+   "cophenetic corr": 0.9163,
+   "silhouette (cut at K)": 0.691,
+   "ARI vs workingday": 0.0095,
+   "cluster sizes": "[725, 3]"
+  },
+  {
+   "dissimilarity": "euclidean",
+   "linkage": "ward",
+   "cophenetic corr": 0.7316,
+   "silhouette (cut at K)": 0.4996,
+   "ARI vs workingday": 0.9502,
+   "cluster sizes": "[500, 228]"
+  },
+  {
+   "dissimilarity": "cosine",
+   "linkage": "single",
+   "cophenetic corr": 0.4972,
+   "silhouette (cut at K)": 0.0286,
+   "ARI vs workingday": -0.0015,
+   "cluster sizes": "[727, 1]"
+  },
+  {
+   "dissimilarity": "cosine",
+   "linkage": "complete",
+   "cophenetic corr": 0.7264,
+   "silhouette (cut at K)": 0.6783,
+   "ARI vs workingday": 0.902,
+   "cluster sizes": "[245, 483]"
+  },
+  {
+   "dissimilarity": "cosine",
+   "linkage": "average",
+   "cophenetic corr": 0.9096,
+   "silhouette (cut at K)": 0.6628,
+   "ARI vs workingday": 0.8502,
+   "cluster sizes": "[257, 471]"
+  },
+  {
+   "dissimilarity": "correlation",
+   "linkage": "single",
+   "cophenetic corr": 0.5286,
+   "silhouette (cut at K)": 0.0267,
+   "ARI vs workingday": -0.0015,
+   "cluster sizes": "[727, 1]"
+  },
+  {
+   "dissimilarity": "correlation",
+   "linkage": "complete",
+   "cophenetic corr": 0.683,
+   "silhouette (cut at K)": 0.6613,
+   "ARI vs workingday": 0.9019,
+   "cluster sizes": "[241, 487]"
+  },
+  {
+   "dissimilarity": "correlation",
+   "linkage": "average",
+   "cophenetic corr": 0.9255,
+   "silhouette (cut at K)": 0.6815,
+   "ARI vs workingday": 0.9126,
+   "cluster sizes": "[243, 485]"
+  }
+ ],
+ "hier": {
+  "ARI_vs_kmeans": 0.9447995612197898,
+  "ARI_vs_gmm": 0.9285969353923108,
+  "ARI_workingday": 0.950181229407178,
+  "ward_coph": 0.7315789906854362
+ },
+ "cluster_eval": [
+  {
+   "Method": "K-means",
+   "K": 2,
+   "Silhouette": 0.5044,
+   "Davies-Bouldin": 0.8404,
+   "Calinski-Harabasz": 727.676,
+   "ARI vs workingday": 0.9394,
+   "ARI vs season": 0.0004,
+   "ARI vs weekday": 0.1948
+  },
+  {
+   "Method": "GMM (EM, full cov, PCA space)",
+   "K": 2,
+   "Silhouette": 0.5018,
+   "Davies-Bouldin": 0.8538,
+   "Calinski-Harabasz": 713.923,
+   "ARI vs workingday": 0.9233,
+   "ARI vs season": 0.0003,
+   "ARI vs weekday": 0.1932
+  },
+  {
+   "Method": "Hierarchical (Ward)",
+   "K": 2,
+   "Silhouette": 0.4996,
+   "Davies-Bouldin": 0.8505,
+   "Calinski-Harabasz": 686.3291,
+   "ARI vs workingday": 0.9502,
+   "ARI vs season": -0.0009,
+   "ARI vs weekday": 0.1983
+  },
+  {
+   "Method": "K-means, finer view K=3",
+   "K": 3,
+   "Silhouette": 0.2393,
+   "Davies-Bouldin": 1.5813,
+   "Calinski-Harabasz": 437.7793,
+   "ARI vs workingday": 0.5189,
+   "ARI vs season": 0.049,
+   "ARI vs weekday": 0.2369
+  }
+ ],
+ "pca": {
+  "eigenvalues": [
+   2.9358,
+   1.7999,
+   1.262,
+   1.1119,
+   0.9806,
+   0.9281,
+   0.7533,
+   0.717,
+   0.3539,
+   0.1519,
+   0.0063
+  ],
+  "cum": [
+   0.2669,
+   0.4305,
+   0.5452,
+   0.6463,
+   0.7354,
+   0.8198,
+   0.8883,
+   0.9534,
+   0.9856,
+   0.9994,
+   1.0
+  ],
+  "M90": 8,
+  "Kaiser": 4,
+  "matches_sklearn": true,
+  "r2_all": 0.4848640127660552,
+  "r2_pc": 0.4841748242987801,
+  "r2_2pc": 0.20732057556447347
+ },
+ "fa": {
+  "q_best": 6,
+  "table": [
+   {
+    "latent dim q": 1,
+    "train avg logL": -12.9321,
+    "test avg logL": -14.8004
+   },
+   {
+    "latent dim q": 2,
+    "train avg logL": -12.6506,
+    "test avg logL": -14.5923
+   },
+   {
+    "latent dim q": 3,
+    "train avg logL": -12.4552,
+    "test avg logL": -14.1182
+   },
+   {
+    "latent dim q": 4,
+    "train avg logL": -12.3814,
+    "test avg logL": -14.1145
+   },
+   {
+    "latent dim q": 5,
+    "train avg logL": -12.3448,
+    "test avg logL": -14.0965
+   },
+   {
+    "latent dim q": 6,
+    "train avg logL": -12.3055,
+    "test avg logL": -14.0349
+   },
+   {
+    "latent dim q": 7,
+    "train avg logL": -12.2662,
+    "test avg logL": -14.0416
+   },
+   {
+    "latent dim q": 8,
+    "train avg logL": -12.2624,
+    "test avg logL": -14.0411
+   }
+  ]
+ },
+ "hmm_checks": {
+  "forward_matches_bruteforce": true,
+  "viterbi_matches_bruteforce": true
+ },
+ "hmm_table": [
+  {
+   "K": 2,
+   "train logL": -18367.858,
+   "test logL (avg per hour)": -1.33,
+   "params": 7,
+   "BIC (train)": 36802.496,
+   "EM iters": 14
+  },
+  {
+   "K": 3,
+   "train logL": -16013.355,
+   "test logL (avg per hour)": -1.173,
+   "params": 14,
+   "BIC (train)": 32160.267,
+   "EM iters": 60
+  },
+  {
+   "K": 4,
+   "train logL": -14503.961,
+   "test logL (avg per hour)": -1.064,
+   "params": 23,
+   "BIC (train)": 29227.338,
+   "EM iters": 86
+  },
+  {
+   "K": 5,
+   "train logL": -13348.908,
+   "test logL (avg per hour)": -1.017,
+   "params": 34,
+   "BIC (train)": 27022.171,
+   "EM iters": 110
+  },
+  {
+   "K": 6,
+   "train logL": -12452.286,
+   "test logL (avg per hour)": -0.939,
+   "params": 47,
+   "BIC (train)": 25352.946,
+   "EM iters": 86
+  }
+ ],
+ "hmm_em_monotone": true,
+ "hmm": {
+  "K": 4,
+  "mu": [
+   2.538,
+   4.199,
+   5.045,
+   5.885
+  ],
+  "std": [
+   0.899,
+   0.334,
+   0.3,
+   0.352
+  ],
+  "A": [
+   [
+    0.836,
+    0.019,
+    0.145,
+    0.0
+   ],
+   [
+    0.296,
+    0.637,
+    0.068,
+    0.0
+   ],
+   [
+    0.0,
+    0.169,
+    0.64,
+    0.191
+   ],
+   [
+    0.0,
+    0.0,
+    0.186,
+    0.814
+   ]
+  ],
+  "dwell": [
+   6.1,
+   2.75,
+   2.78,
+   5.39
+  ],
+  "state_share": [
+   0.26692080845860605,
+   0.14543623678342804,
+   0.2895058620441631,
+   0.2981370927138028
+  ],
+  "viterbi_vs_gamma_agree": 0.9856156501726122,
+  "test_state_share": [
+   0.22986191024165709,
+   0.08342922899884925,
+   0.21518987341772153,
+   0.47151898734177217
+  ],
+  "ll_train": -1.043225192659241,
+  "ll_test": -1.0638313923056864,
+  "next_state_acc": 0.7249712313003452,
+  "persist_state_acc": 0.7772661870503597
+ },
+ "kalman": {
+  "phi": 0.9349342592173993,
+  "Q": 0.04461920484308986,
+  "R": 0.02940238200730671,
+  "half_life_h": 10.30256885240065,
+  "profile_var_explained": 0.8070030270431954,
+  "direct_check": true,
+  "cov95_1h": 0.943325661680092,
+  "cov95_24h": 0.9772727272727273,
+  "mean_level_anomaly_test": 0.3762774790735134
+ },
+ "forecast": [
+  {
+   "Model": "Kalman LDS, 1 h ahead",
+   "MAE": 31.2005,
+   "RMSE": 51.0953,
+   "R\u00b2": 0.9463,
+   "MAE (log scale)": 0.1906
+  },
+  {
+   "Model": "Seasonal naive, same hour last week",
+   "MAE": 78.1502,
+   "RMSE": 138.2014,
+   "R\u00b2": 0.6071,
+   "MAE (log scale)": 0.4631
+  },
+  {
+   "Model": "Seasonal naive, same hour yesterday",
+   "MAE": 80.4603,
+   "RMSE": 134.7591,
+   "R\u00b2": 0.6264,
+   "MAE (log scale)": 0.4764
+  },
+  {
+   "Model": "Persistence (cnt[t-1])",
+   "MAE": 85.1821,
+   "RMSE": 129.6526,
+   "R\u00b2": 0.6542,
+   "MAE (log scale)": 0.4752
+  },
+  {
+   "Model": "Kalman LDS, 24 h ahead",
+   "MAE": 102.7709,
+   "RMSE": 145.149,
+   "R\u00b2": 0.5666,
+   "MAE (log scale)": 0.5038
+  },
+  {
+   "Model": "HMM (K=4), 1 h ahead",
+   "MAE": 105.2174,
+   "RMSE": 166.9855,
+   "R\u00b2": 0.4264,
+   "MAE (log scale)": 0.5758
+  },
+  {
+   "Model": "Profile only (hour\u00d7workingday, no filter)",
+   "MAE": 117.1769,
+   "RMSE": 164.7881,
+   "R\u00b2": 0.4414,
+   "MAE (log scale)": 0.5852
+  }
+ ],
+ "cart_depth_table": [
+  {
+   "max_depth": 1,
+   "CV accuracy (TimeSeriesSplit)": 0.7469,
+   "train accuracy": 0.7728,
+   "test accuracy": 0.8628
+  },
+  {
+   "max_depth": 2,
+   "CV accuracy (TimeSeriesSplit)": 0.7086,
+   "train accuracy": 0.8164,
+   "test accuracy": 0.7529
+  },
+  {
+   "max_depth": 3,
+   "CV accuracy (TimeSeriesSplit)": 0.7391,
+   "train accuracy": 0.8281,
+   "test accuracy": 0.7581
+  },
+  {
+   "max_depth": 4,
+   "CV accuracy (TimeSeriesSplit)": 0.7444,
+   "train accuracy": 0.8549,
+   "test accuracy": 0.8564
+  },
+  {
+   "max_depth": 5,
+   "CV accuracy (TimeSeriesSplit)": 0.8026,
+   "train accuracy": 0.8813,
+   "test accuracy": 0.891
+  },
+  {
+   "max_depth": 6,
+   "CV accuracy (TimeSeriesSplit)": 0.8289,
+   "train accuracy": 0.8841,
+   "test accuracy": 0.897
+  },
+  {
+   "max_depth": 7,
+   "CV accuracy (TimeSeriesSplit)": 0.838,
+   "train accuracy": 0.8925,
+   "test accuracy": 0.9036
+  },
+  {
+   "max_depth": 8,
+   "CV accuracy (TimeSeriesSplit)": 0.8359,
+   "train accuracy": 0.9058,
+   "test accuracy": 0.901
+  },
+  {
+   "max_depth": 9,
+   "CV accuracy (TimeSeriesSplit)": 0.8359,
+   "train accuracy": 0.9201,
+   "test accuracy": 0.9065
+  },
+  {
+   "max_depth": 10,
+   "CV accuracy (TimeSeriesSplit)": 0.8307,
+   "train accuracy": 0.9257,
+   "test accuracy": 0.9019
+  },
+  {
+   "max_depth": 11,
+   "CV accuracy (TimeSeriesSplit)": 0.8399,
+   "train accuracy": 0.9366,
+   "test accuracy": 0.9013
+  },
+  {
+   "max_depth": 12,
+   "CV accuracy (TimeSeriesSplit)": 0.8387,
+   "train accuracy": 0.9415,
+   "test accuracy": 0.8953
+  },
+  {
+   "max_depth": 13,
+   "CV accuracy (TimeSeriesSplit)": 0.8338,
+   "train accuracy": 0.942,
+   "test accuracy": 0.8921
+  },
+  {
+   "max_depth": 14,
+   "CV accuracy (TimeSeriesSplit)": 0.8301,
+   "train accuracy": 0.9425,
+   "test accuracy": 0.8921
+  },
+  {
+   "max_depth": 15,
+   "CV accuracy (TimeSeriesSplit)": 0.8334,
+   "train accuracy": 0.9443,
+   "test accuracy": 0.8921
+  }
+ ],
+ "cart_depth": 11,
+ "rf_oob": 0.928360785441991,
+ "bag_oob": 0.9431777314248724,
+ "bag_tree_acc_mean": 0.8872842347525892,
+ "bag_tree_acc_sd": 0.01052714295945454,
+ "gb_grid": [
+  {
+   "learning_rate": 0.05,
+   "max_depth": 3,
+   "best #trees": 381,
+   "CV accuracy": 0.8975
+  },
+  {
+   "learning_rate": 0.2,
+   "max_depth": 3,
+   "best #trees": 108,
+   "CV accuracy": 0.8962
+  },
+  {
+   "learning_rate": 0.1,
+   "max_depth": 5,
+   "best #trees": 57,
+   "CV accuracy": 0.8948
+  },
+  {
+   "learning_rate": 0.1,
+   "max_depth": 3,
+   "best #trees": 280,
+   "CV accuracy": 0.8943
+  },
+  {
+   "learning_rate": 0.05,
+   "max_depth": 5,
+   "best #trees": 135,
+   "CV accuracy": 0.8931
+  },
+  {
+   "learning_rate": 0.2,
+   "max_depth": 5,
+   "best #trees": 45,
+   "CV accuracy": 0.8922
+  }
+ ],
+ "bma_weights": {
+  "cart": 5.858112359551299e-270,
+  "rf": 8.160545004093491e-26,
+  "gb": 1.0,
+  "ada": 3.822511681934272e-247,
+  "logreg": 4.2840175927881414e-302
+ },
+ "cls": [
+  {
+   "Model": "Stacking (CART+RF+GB+Ada \u2192 LR)",
+   "Accuracy": 0.9266,
+   "Precision": 0.913,
+   "Recall": 0.9756,
+   "F1": 0.9433,
+   "ROC-AUC": 0.9779,
+   "Log-loss": 0.1905,
+   "fit s": "",
+   "note": "expanding-window OOF meta-features"
+  },
+  {
+   "Model": "Gradient Boosting (CV-tuned)",
+   "Accuracy": 0.9206,
+   "Precision": 0.9385,
+   "Recall": 0.9342,
+   "F1": 0.9364,
+   "ROC-AUC": 0.9778,
+   "Log-loss": 0.1832,
+   "fit s": 2.3439,
+   "note": "lr=0.05, depth=3, M=381"
+  },
+  {
+   "Model": "Bayesian model averaging",
+   "Accuracy": 0.9206,
+   "Precision": 0.9385,
+   "Recall": 0.9342,
+   "F1": 0.9364,
+   "ROC-AUC": 0.9778,
+   "Log-loss": 0.1832,
+   "fit s": "",
+   "note": "held-out-likelihood weights"
+  },
+  {
+   "Model": "Random Forest (500 trees)",
+   "Accuracy": 0.9186,
+   "Precision": 0.9557,
+   "Recall": 0.9121,
+   "F1": 0.9334,
+   "ROC-AUC": 0.9775,
+   "Log-loss": 0.2315,
+   "fit s": 0.7994,
+   "note": "OOB acc 0.928"
+  },
+  {
+   "Model": "AdaBoost (depth-3 trees, 300)",
+   "Accuracy": 0.9246,
+   "Precision": 0.933,
+   "Recall": 0.9476,
+   "F1": 0.9402,
+   "ROC-AUC": 0.9759,
+   "Log-loss": 0.4245,
+   "fit s": 2.2363,
+   "note": ""
+  },
+  {
+   "Model": "Bagging (200 trees)",
+   "Accuracy": 0.9194,
+   "Precision": 0.938,
+   "Recall": 0.9328,
+   "F1": 0.9354,
+   "ROC-AUC": 0.9756,
+   "Log-loss": 0.2229,
+   "fit s": 2.903,
+   "note": "OOB acc 0.943"
+  },
+  {
+   "Model": "AdaBoost (stumps, 300)",
+   "Accuracy": 0.8947,
+   "Precision": 0.8887,
+   "Recall": 0.9508,
+   "F1": 0.9187,
+   "ROC-AUC": 0.9641,
+   "Log-loss": 0.5329,
+   "fit s": 0.8929,
+   "note": ""
+  },
+  {
+   "Model": "CART (cost-complexity pruned)",
+   "Accuracy": 0.8984,
+   "Precision": 0.9171,
+   "Recall": 0.9209,
+   "F1": 0.919,
+   "ROC-AUC": 0.9425,
+   "Log-loss": 0.3298,
+   "fit s": 0.021,
+   "note": "\u03b1=0.00151, leaves=26"
+  },
+  {
+   "Model": "CART (CV depth)",
+   "Accuracy": 0.9091,
+   "Precision": 0.9329,
+   "Recall": 0.9209,
+   "F1": 0.9269,
+   "ROC-AUC": 0.9414,
+   "Log-loss": 0.4948,
+   "fit s": 0.0201,
+   "note": "depth=11"
+  },
+  {
+   "Model": "Logistic regression (raw, reference)",
+   "Accuracy": 0.8239,
+   "Precision": 0.8287,
+   "Recall": 0.9057,
+   "F1": 0.8655,
+   "ROC-AUC": 0.8864,
+   "Log-loss": 0.4212,
+   "fit s": 0.0064,
+   "note": "Unit 2 baseline"
+  }
+ ],
+ "importance": {
+  "rf_gini_top": {
+   "hr": 0.493,
+   "atemp": 0.108,
+   "temp": 0.1,
+   "hum": 0.09
+  },
+  "perm_top": {
+   "hr": 0.327,
+   "workingday": 0.011,
+   "temp": 0.009,
+   "atemp": 0.008
+  }
+ },
+ "gam": {
+  "alpha": 0.1,
+  "table": [
+   {
+    "Model": "Poisson GAM (splines)",
+    "RMSE": 68.439,
+    "MAE": 44.8879,
+    "R\u00b2": 0.9037
+   },
+   {
+    "Model": "Gradient-boosting regressor",
+    "RMSE": 69.0419,
+    "MAE": 45.52,
+    "R\u00b2": 0.9019
+   },
+   {
+    "Model": "Random-forest regressor",
+    "RMSE": 70.7424,
+    "MAE": 45.6106,
+    "R\u00b2": 0.8971
+   },
+   {
+    "Model": "Linear ridge, raw features (reference)",
+    "RMSE": 183.2793,
+    "MAE": 138.2918,
+    "R\u00b2": 0.309
+   }
+  ],
+  "cv": [
+   {
+    "penalty \u03b1": 0.0,
+    "CV MAE": 69.6669
+   },
+   {
+    "penalty \u03b1": 0.0001,
+    "CV MAE": 69.6053
+   },
+   {
+    "penalty \u03b1": 0.001,
+    "CV MAE": 69.3056
+   },
+   {
+    "penalty \u03b1": 0.01,
+    "CV MAE": 68.5557
+   },
+   {
+    "penalty \u03b1": 0.1,
+    "CV MAE": 65.0588
+   },
+   {
+    "penalty \u03b1": 1.0,
+    "CV MAE": 69.9913
+   }
+  ],
+  "temp_peak_C": 29.881355932203387
+ }
+}
