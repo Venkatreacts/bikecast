@@ -8,7 +8,7 @@ import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 
 import ui  # noqa: E402
-from app import core  # noqa: E402
+from app import captions, core  # noqa: E402
 
 ui.setup("Predict hourly demand")
 st = ui.st
@@ -27,6 +27,10 @@ wind = c3.slider("Wind speed (km/h)", 0.0, 67.0, 12.0, 0.5)
 row = core.make_row(d, hr, w, temp_c, hum, wind, day, models["atemp_fit"])
 out = core.predict(models, row).iloc[0]
 cal = core.calendar_fields(d, day)
+if w == 4:
+    n_storm = int((art["hour"].iloc[: int(0.8 * len(art["hour"]))].weathersit == 4).sum())
+    st.warning(f"Only {n_storm} storm hours exist in the training data, so predictions for this weather are "
+               "unreliable (the models can even predict more rentals than for light rain).")
 if cal["out_of_range"]:
     st.info("The models were trained on 2011–2012 only. This date is treated as 2012 (the later, busier year).")
 
@@ -58,4 +62,4 @@ right.altair_chart(
     + alt.Chart(pd.DataFrame({"t": [temp_c]})).mark_rule(color="#e07a5f").encode(x="t:Q"),
     width="stretch",
 )
-right.caption("The GAM is a sum of smooth effects; demand rises with temperature up to about 30 °C, then falls.")
+right.caption(captions.gam_curve(art["ref"]))

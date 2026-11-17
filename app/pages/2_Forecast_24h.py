@@ -8,7 +8,7 @@ import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 
 import ui  # noqa: E402
-from app import core  # noqa: E402
+from app import captions, core  # noqa: E402
 
 ui.setup("24-hour demand forecast (Kalman filter)")
 st = ui.st
@@ -66,5 +66,4 @@ else:
 full = pd.DataFrame(ref["forecast"])[["Model", "MAE", "RMSE", "R²"]]
 st.subheader("Whole test period (7 Aug – 31 Dec 2012)")
 st.dataframe(full.round(2), hide_index=True)
-st.caption("Over the full test period the 1-hour-ahead Kalman forecast has MAE 31.2 rentals, against 85.2 for "
-           "persistence and 80.5 for same-hour-yesterday; the HMM is a poor forecaster and is used for decoding.")
+st.caption(captions.forecast(ref))

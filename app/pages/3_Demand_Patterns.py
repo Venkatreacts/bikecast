@@ -6,6 +6,7 @@ import altair as alt  # noqa: E402
 import pandas as pd  # noqa: E402
 
 import ui  # noqa: E402
+from app import captions  # noqa: E402
 
 ui.setup("Demand patterns")
 st = ui.st
@@ -26,11 +27,7 @@ with t1:
                     .mark_line(point=True).encode(x=alt.X("hr:Q", title="hour of day"),
                                                   y=alt.Y("share:Q", title="share of daily rentals"),
                                                   color=alt.Color("pattern:N", title=None)), width="stretch")
-    k = ref["kmeans"]
-    st.caption(f"Silhouette ({k['sil']:.2f}) and Davies–Bouldin ({k['DB']:.2f}) both choose K = 2. The clusters "
-               f"match the working-day flag almost exactly (ARI {k['ARI_workingday']:.2f}): commuters create 8:00 "
-               "and 17:00 peaks, leisure riders a midday hump. Three near-empty days (e.g. Hurricane Sandy) "
-               "are excluded.")
+    st.caption(captions.kmeans(ref))
     st.dataframe(pd.DataFrame(ref["kmeans_table"]).round(3), hide_index=True)
 
 with t2:
@@ -42,9 +39,7 @@ with t2:
                         x=alt.X("pc1:Q", title="PC 1"), y=alt.Y("pc2:Q", title="PC 2"),
                         color=alt.Color(f"{field}:N", title=None),
                         tooltip=["date:T", "total:Q", "pattern:N"]), width="stretch")
-    st.caption("Two well-separated groups: splitting on PC 1 alone reproduces the K-means clusters for 99.9 % of "
-               "days. Only 11 days sit in the 'wrong' group for their calendar flag: mostly working days around "
-               "Thanksgiving and Christmas that behave like leisure days, and 3 holidays that look like commute days.")
+    st.caption(captions.pca(ref))
 
 with t3:
     hmm["week"] = (hmm.date - pd.to_timedelta(hmm.date.dt.weekday, unit="D")).dt.date

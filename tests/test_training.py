@@ -15,7 +15,7 @@ def test_artifacts_load():
     import joblib
     import pandas as pd
 
-    for f in ["models.joblib", "kalman.json", "kmeans_profiles.csv", "days.csv", "hmm_test.csv", "parity.json"]:
+    for f in ["models.joblib", "meta.json", "kalman.json", "kmeans_profiles.csv", "days.csv", "hmm_test.csv", "parity.json"]:
         assert os.path.exists(f"artifacts/{f}"), f
     assert len(joblib.load("artifacts/models.joblib")["base"]) == 4
     assert len(json.load(open("artifacts/kalman.json"))["profile"]) == 48

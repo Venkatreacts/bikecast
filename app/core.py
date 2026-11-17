@@ -27,9 +27,13 @@ class ArtifactVersionError(RuntimeError):
 
 
 def load_artifacts() -> dict:
-    models = joblib.load(ART / "models.joblib")
-    if models["sklearn_version"] != sklearn.__version__:
-        raise ArtifactVersionError(models["sklearn_version"], sklearn.__version__)
+    saved = json.load(open(ART / "meta.json"))["sklearn_version"]  # read before unpickling, which may crash
+    if saved != sklearn.__version__:
+        raise ArtifactVersionError(saved, sklearn.__version__)
+    try:
+        models = joblib.load(ART / "models.joblib")
+    except Exception as e:
+        raise ArtifactVersionError(saved, sklearn.__version__) from e
     hour = pd.read_csv(ROOT / "data" / "hour.csv")
     hour["date"] = pd.to_datetime(hour.dteday)
     hour = hour.sort_values(["date", "hr"]).reset_index(drop=True)

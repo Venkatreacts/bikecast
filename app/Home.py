@@ -48,4 +48,6 @@ st.markdown(
     "demand states decoded by the HMM.\n"
     "- **Model Leaderboard** (Units 1-5): every model's test metrics in one place."
 )
-st.caption("All numbers come from the project notebooks, re-run and checked by `training/train_models.py`.")
+st.caption("Units 3–5 models are re-built from the notebook by `training/train_models.py`, which checks their "
+           "headline numbers against the notebook's saved results. Units 1–2 numbers are read from the PBL 1 "
+           "notebook's saved results.")

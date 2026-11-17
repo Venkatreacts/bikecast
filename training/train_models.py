@@ -92,6 +92,7 @@ def export(ns: dict, out: Path) -> None:
         out / "models.joblib",
         compress=3,
     )
+    json.dump({"sklearn_version": sklearn.__version__}, open(out / "meta.json", "w"))
     json.dump(
         {"phi": float(ns["phi_h"]), "Q": float(ns["Q_h"]), "R": float(ns["R_h"]),
          "profile": [float(v) for v in ns["m_tr"]], "P0": 1.0},
