@@ -10,7 +10,7 @@
 | Venkatanathan O R V | RA2411026011163 |
 | Dhruva Mishra | RA2411026011164 |
 
-Live demo: https://team8-bike-demand.streamlit.app
+Live demo: https://bikecast.streamlit.app
 
 ## What is here
 

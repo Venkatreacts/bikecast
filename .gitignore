@@ -6,3 +6,5 @@ __pycache__/
 .superpowers/
 .venv/
 data/ML_Project_Batch_details.xlsx
+report/build/*
+!report/build/figs/
