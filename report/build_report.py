@@ -101,9 +101,9 @@ def front_matter(rp: Report):
     rp.prelim("TABLE OF CONTENTS")
     rp.toc()
     rp.prelim("LIST OF FIGURES")
-    rp.list_of("RptFigCaption")
+    rp.list_of("fig")
     rp.prelim("LIST OF TABLES")
-    rp.list_of("RptTabCaption")
+    rp.list_of("tab")
     rp.prelim("ABBREVIATIONS")
     abbr = [
         ("ARI", "Adjusted Rand Index"), ("AUC", "Area Under the ROC Curve"), ("BIC", "Bayesian Information Criterion"),

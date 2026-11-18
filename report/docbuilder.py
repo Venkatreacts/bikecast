@@ -65,6 +65,8 @@ class Report:
         self.tab_no = 0
         self.eq_no = 0
         self._first_prelim = True
+        self.entries = {"toc": [], "fig": [], "tab": []}  # (number, title, bookmark, level) for the front-matter tables
+        self.placeholders = {}
         self._styles()
         self._cover(members, title)
         self._tidy_front(faculty)
@@ -123,13 +125,6 @@ class Report:
         rf = st["RptRef"].paragraph_format
         rf.left_indent = Inches(0.4)
         rf.first_line_indent = Inches(-0.4)
-        for lvl in (1, 2, 3):  # table-of-contents entries in Times New Roman
-            _font(st[f"toc {lvl}"], FONT, 12)
-        names = [s.name for s in st]
-        toc9 = st["toc 9"] if "toc 9" in names else st.add_style("toc 9", WD_STYLE_TYPE.PARAGRAPH)
-        _font(toc9, FONT, 12, bold=False)  # lists of figures/tables use level 9: plain, no indent
-        toc9.paragraph_format.left_indent = Inches(0)
-        toc9.paragraph_format.space_after = Pt(4)
 
     def _cover(self, members, title):
         from docx.text.paragraph import Paragraph
@@ -246,8 +241,23 @@ class Report:
     def page_break(self):
         self.doc.add_paragraph(style="RptBody").add_run().add_break(WD_BREAK.PAGE)
 
+    def _mark(self, p, kind, number, title, level=0):
+        """Bookmark paragraph p and list it in the TOC / list of figures / list of tables."""
+        n = sum(len(v) for v in self.entries.values())
+        name, bid = f"_rpt{n}", str(1000 + n)
+        start = OxmlElement("w:bookmarkStart"); start.set(qn("w:id"), bid); start.set(qn("w:name"), name)
+        end = OxmlElement("w:bookmarkEnd"); end.set(qn("w:id"), bid)
+        ppr = p._p.find(qn("w:pPr"))
+        if ppr is not None:
+            ppr.addnext(start)
+        else:
+            p._p.insert(0, start)
+        p._p.append(end)
+        self.entries[kind].append((number, title, name, level))
+
     def prelim(self, title):
         p = self.doc.add_paragraph(title, style="RptPrelim")
+        self._mark(p, "toc", "", title)
         p.paragraph_format.page_break_before = not self._first_prelim  # first one opens a new section anyway
         self._first_prelim = False
 
@@ -258,13 +268,16 @@ class Report:
             self.doc.add_section(WD_SECTION.NEW_PAGE)
         p = self.doc.add_paragraph(f"CHAPTER {self.chapter_no}", style="RptChapterNo")
         p.paragraph_format.page_break_before = self.chapter_no > 1
-        self.doc.add_paragraph(f"{self.chapter_no}. {title.upper()}", style="RptChapter")
+        p = self.doc.add_paragraph(f"{self.chapter_no}. {title.upper()}", style="RptChapter")
+        self._mark(p, "toc", f"{self.chapter_no}.", title.upper())
 
     def unnumbered_chapter(self, title):
-        self.doc.add_paragraph(title.upper(), style="RptChapter").paragraph_format.page_break_before = True
+        p = self.doc.add_paragraph(title.upper(), style="RptChapter")
+        p.paragraph_format.page_break_before = True
+        self._mark(p, "toc", "", title.upper())
 
     def h2(self, text):
-        self.doc.add_paragraph(text, style="RptSection")
+        self._mark(self.doc.add_paragraph(text, style="RptSection"), "toc", "", text, level=1)
 
     def h3(self, text):
         self.doc.add_paragraph(text, style="RptSub")
@@ -283,7 +296,8 @@ class Report:
         label = f"Figure {self.chapter_no}.{self.fig_no}"
         p = self.doc.add_paragraph(style="RptFigure")
         p.add_run().add_picture(str(path), width=Inches(min(width, TEXT_WIDTH_IN)))
-        self.doc.add_paragraph(f"{label}: {caption}", style="RptFigCaption")
+        cp = self.doc.add_paragraph(f"{label}: {caption}", style="RptFigCaption")
+        self._mark(cp, "fig", f"{self.chapter_no}.{self.fig_no}", caption)
         return label
 
     def table(self, header, rows, caption, widths=None, align_numbers=True):
@@ -291,7 +305,13 @@ class Report:
         if caption:  # caption=None gives an unnumbered table (abbreviations)
             self.tab_no += 1
             label = f"Table {self.chapter_no}.{self.tab_no}"
-            self.doc.add_paragraph(f"{label}: {caption}", style="RptTabCaption")
+            cp = self.doc.add_paragraph(f"{label}: {caption}", style="RptTabCaption")
+            self._mark(cp, "tab", f"{self.chapter_no}.{self.tab_no}", caption)
+        self._grid(header, rows, widths, align_numbers)
+        self.doc.add_paragraph(style="RptBody").paragraph_format.space_after = Pt(2)
+        return label
+
+    def _grid(self, header, rows, widths=None, align_numbers=True):
         t = self.doc.add_table(rows=1 + len(rows), cols=len(header))
         t.style = self.doc.styles["Table Grid"]
         t.alignment = WD_TABLE_ALIGNMENT.CENTER
@@ -324,17 +344,42 @@ class Report:
             if len(t.rows) <= 16 and k < len(t.rows) - 1:
                 for c in row.cells:
                     c.paragraphs[0].paragraph_format.keep_with_next = True
-        self.doc.add_paragraph(style="RptBody").paragraph_format.space_after = Pt(2)
-        return label
+        return t
 
     # ---------- fields and code ----------
     def toc(self):
-        # only our own heading styles: the template cover uses Heading 1-4 for its title block
-        _field(self.doc.add_paragraph(style="RptBody"),
-               'TOC \\h \\z \\t "RptPrelim,1,RptChapter,1,RptSection,2,RptSub,3"')
+        self.placeholders["toc"] = self.doc.add_paragraph(style="RptBody")
 
-    def list_of(self, caption_style):
-        _field(self.doc.add_paragraph(style="RptBody"), f'TOC \\h \\z \\t "{caption_style},9"')  # toc 9: plain style
+    def list_of(self, kind):
+        self.placeholders[kind] = self.doc.add_paragraph(style="RptBody")
+
+    def _list_tables(self):
+        """Fill the placeholders with No. | Title | Page No. tables; page numbers are PAGEREF fields Word updates."""
+        heads = {"toc": "CHAPTER NO.", "fig": "FIGURE NO.", "tab": "TABLE NO."}
+        for kind, ph in self.placeholders.items():
+            rows = self.entries[kind]
+            t = self._grid([heads[kind], "TITLE", "PAGE NO."], [(n, ti, "") for n, ti, _, _ in rows],
+                           widths=[1.25, 3.57, 0.95])
+            for row, (num, title, name, level) in zip(t.rows[1:], rows):
+                c_no, c_ti, c_pg = row.cells
+                c_no.paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.CENTER
+                c_ti.paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.LEFT
+                if kind == "toc":
+                    for c in (c_no, c_ti):
+                        for r in c.paragraphs[0].runs:
+                            r.bold = level == 0
+                    if level:
+                        c_ti.paragraphs[0].paragraph_format.left_indent = Inches(0.2)
+                para = c_pg.paragraphs[0]
+                para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                _field(para, f"PAGEREF {name} \\h", "0")
+                for r in para.runs:
+                    _font(r, FONT, 11)
+            for row in t.rows:  # long lists may break across pages
+                for c in row.cells:
+                    c.paragraphs[0].paragraph_format.keep_with_next = False
+            ph._p.addnext(t._tbl)
+            ph._p.getparent().remove(ph._p)
 
     def code(self, text):
         for line in text.splitlines() or [""]:
@@ -359,6 +404,7 @@ class Report:
             pg.set(qn("w:start"), str(start))
 
     def finish(self, path):
+        self._list_tables()
         secs = self.doc.sections
         for s in secs[2:]:  # cover (0) and bonafide (1) keep the template layout
             s.left_margin, s.right_margin = Inches(1.5), Inches(1.0)
