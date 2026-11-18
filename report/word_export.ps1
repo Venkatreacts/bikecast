@@ -1,6 +1,6 @@
 # Opens the built report in Microsoft Word, fills the TOC / list fields and page numbers, saves, and exports a PDF.
+param([string]$docx = (Join-Path $PSScriptRoot "Team8_ML_Project_Report.docx"))
 $ErrorActionPreference = "Stop"
-$docx = Join-Path $PSScriptRoot "Team8_ML_Project_Report.docx"
 $pdf = [System.IO.Path]::ChangeExtension($docx, ".pdf")
 $word = New-Object -ComObject Word.Application
 $word.Visible = $false

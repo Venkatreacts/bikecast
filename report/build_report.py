@@ -5,6 +5,7 @@ which the notebooks write; nothing is typed in by hand except values those noteb
 (noted in comments). Run:  python report/build_report.py   then  report/word_export.ps1  for fields + PDF.
 """
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -15,12 +16,14 @@ import diagrams  # noqa: E402
 ROOT = Path(__file__).resolve().parents[1]
 FIG = ROOT / "pbl1_archive" / "figures"
 BFIG = ROOT / "report" / "build" / "figs"
-OUT = ROOT / "report" / "Team8_ML_Project_Report.docx"
+OUT = Path(os.environ.get("REPORT_OUT", ROOT / "report" / "Team8_ML_Project_Report.docx"))
 REPO = "https://github.com/Venkatreacts/bikecast"
 APP = "https://bikecast.streamlit.app"
 NB1 = "Team8_Bike_Sharing_ML_PBL1_Final.ipynb"
 NB2 = "Team8_Bike_Sharing_ML_PBL2_Units3-5.ipynb"
 COLAB = "https://colab.research.google.com/github/Venkatreacts/bikecast/blob/main/notebooks/"
+
+FACULTY = "Dr. Mohammad Ishtiyaq Qureshi"
 
 MEMBERS = [
     ("Venkatanathan O R V", "RA2411026011163"),
@@ -191,8 +194,7 @@ def chapter2(rp: Report):
          "SVMs with a linear and an RBF kernel. Their assumptions differ (Gaussian classes, linear log-odds, kernel "
          "similarity), so comparing them shows which assumption suits the data [3], [5].")
     rp.h2("2.2 Dataset Description")
-    rp.p("The data is the UCI Machine Learning Repository Bike Sharing Dataset (id 275, H. Fanaee-T, version of 2013, "
-         "https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset), built from Capital Bikeshare trip logs with weather "
+    rp.p("The data is the UCI Machine Learning Repository Bike Sharing Dataset (id 275, H. Fanaee-T, 2013), built from Capital Bikeshare trip logs with weather "
          "and holiday information [1], [2]. hour.csv has 17,379 rows and 17 columns; day.csv has 731 rows and 16 columns. Together "
          "they record 3,292,679 rentals, 81% of them by registered members. There are no missing values and no duplicate "
          "rows or (date, hour) keys, and day.csv equals the sum of the hourly data on all 731 days. 165 clock-hours have no "
@@ -290,7 +292,7 @@ def chapter2(rp: Report):
          "On a chronological split every degree has a negative held-out R² because 2012 is busier than 2011 at every "
          "temperature; temperature alone cannot explain the growth.")
     rp.h2("2.5 Proposed System Architecture / Workflow")
-    rp.fig(BFIG / "flow_pbl1.png", "Workflow of PBL 1 (Units 1 and 2)", width=4.9)
+    rp.fig(BFIG / "flow_pbl1.png", "Workflow of PBL 1 (Units 1 and 2)", width=3.9)
     rp.p("Figure 2.8 shows the stages. The raw files are checked for quality and leakage, sorted and split by time. Unit 1 "
          "analyses the training-period distribution and dependences. The features are then built in two versions (RAW and "
          "ENCODED) with training-only scaling. Unit 2 fits the regression and classification models, selects "
@@ -459,7 +461,7 @@ def chapter3(rp: Report):
          "unique variance; the number of factors q is chosen by the log-likelihood on held-out test rows:")
     rp.eq("x = Wz + μ + ε,   z ~ N(0, I_{q}),   ε ~ N(0, Ψ)")
     rp.h2("3.5 Unit 3 Proposed System Architecture / Workflow")
-    rp.fig(BFIG / "flow_u3.png", "Workflow of Unit 3 (clustering and dimensionality reduction)", width=4.9)
+    rp.fig(BFIG / "flow_u3.png", "Workflow of Unit 3 (clustering and dimensionality reduction)", width=3.9)
     rp.p("The day × hour matrix is turned into standardised shape profiles; three clustering families are run and "
          "validated with internal indices; external labels are used only after clustering. In parallel, the hourly "
          "weather–time features are scaled on training rows and reduced with PCA and factor analysis. The outputs (two "
@@ -565,7 +567,7 @@ def chapter3(rp: Report):
          "rentals are recovered as exp(ẑ) − 1. Assumptions: Markov dynamics, Gaussian emissions on the log scale, and "
          "parameters that do not change over the two years.")
     rp.h2("3.10 Unit 4 Proposed System Architecture / Workflow")
-    rp.fig(BFIG / "flow_u4.png", "Workflow of Unit 4 (sequential models)", width=4.9)
+    rp.fig(BFIG / "flow_u4.png", "Workflow of Unit 4 (sequential models)", width=3.9)
     rp.p("The log-count sequence is split in time order. The HMM branch learns discrete demand states by Baum–Welch and "
          "decodes them with Viterbi. The LDS branch removes the training profile and filters the residual level with the "
          "Kalman filter. Both are evaluated on the test hours, against naive baselines, at 1 hour and 24 hours ahead. The "
@@ -668,7 +670,7 @@ def chapter4(rp: Report):
          "Gini importance is inflated for continuous features with many split points. Working day ranks second by "
          "permutation importance, confirming the hour × working-day interaction found in Units 1 and 3.")
     rp.h2("4.4 Proposed Workflow / Architecture")
-    rp.fig(BFIG / "flow_u5.png", "Workflow of Unit 5 (trees, ensembles and GAM)", width=4.9)
+    rp.fig(BFIG / "flow_u5.png", "Workflow of Unit 5 (trees, ensembles and GAM)", width=3.9)
     rp.p("The raw features and the training-median label feed a time-ordered cross-validation loop used for every "
          "hyper-parameter. A single tree is grown and pruned; bagging, random forest, AdaBoost and gradient boosting build "
          "ensembles of trees; stacking and BMA combine them. In parallel, a Poisson GAM models the count. All models are "
@@ -685,7 +687,8 @@ def chapter4(rp: Report):
          "give an out-of-bag (OOB) estimate. **Random forest** [14] also samples a random subset of features at each split, "
          "which de-correlates the trees.")
     rp.p("**AdaBoost** [15] fits weak learners h_{m} in sequence, raising the weight of misclassified hours:")
-    rp.eq("α_{m} = ln((1 − err_{m}) / err_{m}),   w_{i} ← w_{i} exp(α_{m} I(y_{i} ≠ h_{m}(x_{i}))),   F(x) = Σ_{m} α_{m} h_{m}(x)")
+    rp.eq("α_{m} = ln((1 − err_{m}) / err_{m}),   F(x) = Σ_{m} α_{m} h_{m}(x)")
+    rp.eq("w_{i} ← w_{i} exp(α_{m} I(y_{i} ≠ h_{m}(x_{i})))")
     rp.p("**Gradient boosting** [16] is an adaptive basis-function model: each new tree h_{m} fits the negative gradient of the "
          "log-loss at the current model, and is added with a learning rate ν:")
     rp.eq("F_{m}(x) = F_{m−1}(x) + ν h_{m}(x)")
@@ -697,8 +700,8 @@ def chapter4(rp: Report):
     rp.eq("p(y | x) = Σ_{k} w_{k} p_{k}(y | x),   w_{k} ∝ exp(ln L_{k})")
     rp.p("**Generalised additive model** [19]. The count is modelled as Poisson with a log link and smooth functions built from "
          "cubic B-splines, fitted with an L2 penalty α (chosen by CV):")
-    rp.eq("ln E[cnt] = β_{0} + f_{1}(temp) + f_{2}(hum) + f_{3}(wind) + f_{wd}(hr) + β ᵀ(season, yr, weather)")
-    rp.p("where f_{wd} is a separate smooth curve of the hour for working and non-working days. The Poisson likelihood "
+    rp.eq("ln E[cnt] = β_{0} + f_{1}(temp) + f_{2}(hum) + f_{3}(wind) + f_{wd}(hr) + βᵀc")
+    rp.p("where c holds the one-hot season, year and weather indicators, f_{wd} is a separate smooth curve of the hour for working and non-working days. The Poisson likelihood "
          "suits counts (never negative, variance growing with the mean), and each f can be plotted and read.")
     rp.h2("4.6 Results and Performance Evaluation")
     rp.h3("4.6.1 CART")
@@ -820,7 +823,7 @@ def chapter5(rp: Report):
         "predict it.",
     ])
     rp.h2("5.2 Deployed Demonstration")
-    rp.fig(BFIG / "flow_system.png", "From notebooks to the deployed demonstration", width=4.6)
+    rp.fig(BFIG / "flow_system.png", "From notebooks to the deployed demonstration", width=3.9)
     rp.p("The Units 3–5 notebook is re-run by a training script that checks eight headline numbers against the saved "
          "results before it exports the models, and 27 automated tests check the notebook parity, the calendar rules and "
          f"every page. The Streamlit application is public at {APP} and its source at {REPO}. It has four pages: Predict "
@@ -956,7 +959,8 @@ def appendix(rp: Report):
 
 def main():
     diagrams.build_all()
-    rp = Report(ROOT / "report" / "template.docx", MEMBERS, "Bike-Sharing Demand Forecasting for Smart Urban Mobility")
+    rp = Report(ROOT / "report" / "template.docx", MEMBERS, "Bike-Sharing Demand Forecasting for Smart Urban Mobility",
+                FACULTY)
     front_matter(rp)
     for ch in (chapter1, chapter2, chapter3, chapter4, chapter5, chapter6):
         ch(rp)

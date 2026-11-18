@@ -8,7 +8,7 @@ import re
 from docx import Document
 from docx.enum.section import WD_SECTION
 from docx.enum.style import WD_STYLE_TYPE
-from docx.enum.table import WD_TABLE_ALIGNMENT
+from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT, WD_TABLE_ALIGNMENT
 from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_BREAK, WD_LINE_SPACING, WD_TAB_ALIGNMENT
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
@@ -58,14 +58,16 @@ def _field(paragraph, instr, placeholder="Right-click and choose Update Field.")
 
 
 class Report:
-    def __init__(self, template_path, members, title):
+    def __init__(self, template_path, members, title, faculty):
         self.doc = Document(template_path)
         self.chapter_no = 0
         self.fig_no = 0
         self.tab_no = 0
         self.eq_no = 0
+        self._first_prelim = True
         self._styles()
         self._cover(members, title)
+        self._tidy_front(faculty)
         self._strip_after_bonafide()
 
     # ---------- setup ----------
@@ -103,9 +105,15 @@ class Report:
         para_style("RptFigure", 12, False, WD_ALIGN_PARAGRAPH.CENTER, 6, 0, spacing=1, keep_next=True)
         para_style("RptTable", 11, False, WD_ALIGN_PARAGRAPH.LEFT, 0, 0, spacing=1)
         para_style("RptEquation", 12, False, WD_ALIGN_PARAGRAPH.LEFT, 4, 4, spacing=1.15, italic=False)
-        para_style("RptCode", 10, False, WD_ALIGN_PARAGRAPH.LEFT, 0, 0, spacing=1, font="Consolas")
+        code = para_style("RptCode", 9, False, WD_ALIGN_PARAGRAPH.LEFT, 0, 0, spacing=1, font="Consolas")
+        code.paragraph_format.left_indent = Inches(0.08)
+        shd = OxmlElement("w:shd")  # light grey band behind code listings
+        shd.set(qn("w:val"), "clear"); shd.set(qn("w:color"), "auto"); shd.set(qn("w:fill"), "F2F2F2")
+        code.element.get_or_add_pPr().append(shd)
         para_style("RptBullet", 12)
         para_style("RptRef", 12, align=WD_ALIGN_PARAGRAPH.LEFT)
+        for cap in ("RptTabCaption", "RptFigCaption", "RptEquation"):  # never break a caption/equation mid-way
+            st[cap].paragraph_format.keep_together = True
         eq = st["RptEquation"].paragraph_format
         eq.tab_stops.add_tab_stop(Inches(TEXT_WIDTH_IN / 2), WD_TAB_ALIGNMENT.CENTER)
         eq.tab_stops.add_tab_stop(Inches(TEXT_WIDTH_IN), WD_TAB_ALIGNMENT.RIGHT)
@@ -159,6 +167,37 @@ class Report:
         for r in runs[1:]:
             r._r.getparent().remove(r._r)
 
+    def _tidy_front(self, faculty):
+        """Cover and bonafide: replace the faculty name, drop the template's ad-hoc indents and padding spaces,
+        centre every text line, and lay out the certificate as one justified block."""
+        body = self.doc.element.body
+        tbl = next(el for el in body if el.tag == qn("w:tbl"))
+        fixes = {"requirementsfor": "requirements for", "ANDTECHNOLOGY": "AND TECHNOLOGY",
+                 "NOV  2026": "NOV 2026", "KATTANKULATHUR- 603 203": "KATTANKULATHUR – 603 203"}
+        for t in tbl.iter(qn("w:t")):  # signature table
+            if t.text and "Prince" in t.text:
+                t.text = faculty
+        for p in self.doc.paragraphs:
+            if p._p.getparent() is not body or list(body).index(p._p) > list(body).index(tbl):
+                continue
+            text = p.text
+            if not text.strip():
+                continue
+            new = " ".join(text.split())
+            for a, b in fixes.items():
+                new = new.replace(a, b)
+            if "Prince" in new:
+                new = faculty
+            self._set_text(p, new)  # always merge runs: some template spaces sit in condensed runs and vanish
+            pf = p.paragraph_format
+            pf.left_indent = pf.right_indent = pf.first_line_indent = Inches(0)
+            if new.startswith("Certified that"):
+                pf.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+                pf.line_spacing = 1.5
+                pf.space_before = Pt(12)
+            else:
+                pf.alignment = WD_ALIGN_PARAGRAPH.CENTER
+
     def _strip_after_bonafide(self):
         body = self.doc.element.body
         kids = list(body)
@@ -167,6 +206,12 @@ class Report:
         for el in kids[start:]:
             if el.tag != qn("w:sectPr"):
                 body.remove(el)
+        # close the bonafide page with its own section so it keeps the template margins
+        p = OxmlElement("w:p")
+        ppr = OxmlElement("w:pPr")
+        ppr.append(copy.deepcopy(body.find(qn("w:sectPr"))))
+        p.append(ppr)
+        body.find(qn("w:sectPr")).addprevious(p)
 
     # ---------- text ----------
     def _runs(self, p, text, size=None):
@@ -189,7 +234,10 @@ class Report:
         return p
 
     def p(self, text):
-        return self._runs(self.doc.add_paragraph(style="RptBody"), text)
+        para = self._runs(self.doc.add_paragraph(style="RptBody"), text)
+        if "https://" in text:  # long unbreakable URLs make justified lines gappy
+            para.alignment = WD_ALIGN_PARAGRAPH.LEFT
+        return para
 
     def bullets(self, items):
         for it in items:
@@ -199,7 +247,9 @@ class Report:
         self.doc.add_paragraph(style="RptBody").add_run().add_break(WD_BREAK.PAGE)
 
     def prelim(self, title):
-        self.doc.add_paragraph(title, style="RptPrelim").paragraph_format.page_break_before = True
+        p = self.doc.add_paragraph(title, style="RptPrelim")
+        p.paragraph_format.page_break_before = not self._first_prelim  # first one opens a new section anyway
+        self._first_prelim = False
 
     def chapter(self, title):
         self.chapter_no += 1
@@ -251,20 +301,29 @@ class Report:
             for j, val in enumerate(row):
                 c = cells[j]
                 c.width = Inches(widths[j])
-                c.paragraphs[0].style = self.doc.styles["RptTable"]
+                c.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
+                para = c.paragraphs[0]
+                para.style = self.doc.styles["RptTable"]
+                para.paragraph_format.space_before = para.paragraph_format.space_after = Pt(2)
                 txt = str(val)
-                self._runs(c.paragraphs[0], txt, size=11)
+                self._runs(para, txt, size=11)
+                # one rule for every table: header centred, first (label) column left, value columns centred
+                centre = i == 0 or (align_numbers and j > 0)
+                para.alignment = WD_ALIGN_PARAGRAPH.CENTER if centre else WD_ALIGN_PARAGRAPH.LEFT
                 if i == 0:
-                    for r in c.paragraphs[0].runs:
+                    for r in para.runs:
                         r.bold = True
                     shd = OxmlElement("w:shd")
                     shd.set(qn("w:val"), "clear"); shd.set(qn("w:color"), "auto"); shd.set(qn("w:fill"), "DCE9F4")
                     c._tc.get_or_add_tcPr().append(shd)
-                elif align_numbers and re.fullmatch(r"[-+−]?[\d.,%×]+", txt.strip()):
-                    c.paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.CENTER
             if i == 0:  # repeat header row on each page
                 trpr = t.rows[0]._tr.get_or_add_trPr()
                 h = OxmlElement("w:tblHeader"); h.set(qn("w:val"), "true"); trpr.append(h)
+        for k, row in enumerate(t.rows):  # rows never split; short tables stay on one page with their caption
+            row._tr.get_or_add_trPr().append(OxmlElement("w:cantSplit"))
+            if len(t.rows) <= 16 and k < len(t.rows) - 1:
+                for c in row.cells:
+                    c.paragraphs[0].paragraph_format.keep_with_next = True
         self.doc.add_paragraph(style="RptBody").paragraph_format.space_after = Pt(2)
         return label
 
@@ -301,9 +360,10 @@ class Report:
 
     def finish(self, path):
         secs = self.doc.sections
-        for s in secs[1:]:
+        for s in secs[2:]:  # cover (0) and bonafide (1) keep the template layout
             s.left_margin, s.right_margin = Inches(1.5), Inches(1.0)
             s.top_margin, s.bottom_margin = Inches(1.0), Inches(1.0)
         self._footer_page_number(secs[1], "lowerRoman", 2)
+        self._footer_page_number(secs[2], "lowerRoman", None)
         self._footer_page_number(secs[-1], "decimal", 1)
         self.doc.save(path)
