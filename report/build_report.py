@@ -11,6 +11,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from docbuilder import Report  # noqa: E402
+import code_excerpt  # noqa: E402
 import diagrams  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -916,45 +917,34 @@ def references(rp: Report):
         rp._runs(rp.doc.add_paragraph(style="RptRef"), f"[{i}]\t{r}")
 
 
-def notebook_code(nb_path: Path):
-    """Yield (markdown heading or None, code) for each code cell, in order."""
-    nb = json.loads(nb_path.read_text(encoding="utf8"))
-    head = None
-    for c in nb["cells"]:
-        src = "".join(c["source"])
-        if c["cell_type"] == "markdown" and src.lstrip().startswith("#"):
-            head = src.strip().splitlines()[0].lstrip("# ").strip()
-        elif c["cell_type"] == "code" and src.strip():
-            yield head, src
-            head = None
-
-
 def appendix(rp: Report):
     rp.unnumbered_chapter("Appendix A")
     rp.doc.add_paragraph("CODING", style="RptChapterNo")
-    rp.p(f"The complete Python implementation is given below, cell by cell, exactly as in the two executed notebooks. Both "
-         f"notebooks, the data and the web application are in the project repository {REPO}. To run a notebook in Google "
-         "Colab, open its link and upload hour.csv and day.csv (from the repository's data folder) to the session before "
-         "running all cells.")
-    nb2 = list(notebook_code(ROOT / "notebooks" / NB2))
-    i4 = next(i for i, (h, _) in enumerate(nb2) if h and h.startswith("UNIT 4") or h and h.startswith("10."))
-    i5 = next(i for i, (h, _) in enumerate(nb2) if h and (h.startswith("UNIT 5") or h.startswith("14.")))
-    parts = [
-        ("Chapter 2 – Implementation Methodology and Algorithm Configuration (Units 1 and 2)", NB1,
-         list(notebook_code(ROOT / "notebooks" / NB1))),
-        ("Chapter 3 – Unit 3 Proposed Workflow and Implementation Methodology", NB2, nb2[:i4]),
-        ("Chapter 3 – Unit 4 Proposed Workflow and Implementation Methodology", NB2, nb2[i4:i5]),
-        ("Chapter 4 – Implementation Methodology and Hyperparameter Configuration (Unit 5)", NB2, nb2[i5:]),
+    rp.p("This appendix gives the core implementation of every allotted algorithm: preprocessing, the models and the "
+         "algorithms written from scratch (Bayesian logistic regression with the Laplace approximation, EM for Gaussian "
+         "mixtures, PCA, the hidden Markov model and the Kalman filter). For each notebook section only the cell "
+         "that implements the method is shown, without plotting and printing statements; verification and plotting cells "
+         "are in the notebooks. The complete notebooks, data and web "
+         f"application are in the project repository {REPO}. To run a notebook in Google Colab, open its link and "
+         "upload hour.csv and day.csv from the repository's data folder before running all cells.")
+    nb1, nb2 = ROOT / "notebooks" / NB1, ROOT / "notebooks" / NB2
+    parts = [  # (appendix heading, notebook, notebook section numbers kept)
+        ("Chapter 2 – Implementation Methodology and Algorithm Configuration (Units 1 and 2)", nb1,
+         ["8", "24", "30"]),
+        ("Chapter 3 – Unit 3 Proposed Workflow and Implementation Methodology", nb2, ["3", "4", "5", "7", "8"]),
+        ("Chapter 3 – Unit 4 Proposed Workflow and Implementation Methodology", nb2, ["10", "11"]),
+        ("Chapter 4 – Implementation Methodology and Hyperparameter Configuration (Unit 5)", nb2,
+         ["14", "15", "16", "17", "19"]),
     ]
-    for title, nb, cells in parts:
+    for title, nb, wanted in parts:
         rp.h2(title)
-        rp.p(f"Notebook: {nb}. Google Colab link: {COLAB}{nb}")
-        for head, src in cells:
+        rp.p(f"Notebook: {nb.name}. Google Colab link: {COLAB}{nb.name}").paragraph_format.keep_with_next = True
+        for head, src in code_excerpt.cells(nb, wanted):
             if head:  # notebook section title in bold body text, kept out of the table of contents
-                clean = head.replace("*", "").replace("`", "")
-                rp.doc.add_paragraph(style="RptBody").add_run(clean).bold = True
+                hp = rp.doc.add_paragraph(style="RptBody")
+                hp.add_run(head.split(" (")[0]).bold = True
+                hp.paragraph_format.keep_with_next = True
             rp.code(src)
-            rp.doc.add_paragraph(style="RptCode")
 
 
 def main():

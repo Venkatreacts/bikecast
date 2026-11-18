@@ -112,7 +112,7 @@ class Report:
         code.element.get_or_add_pPr().append(shd)
         para_style("RptBullet", 12)
         para_style("RptRef", 12, align=WD_ALIGN_PARAGRAPH.LEFT)
-        for cap in ("RptTabCaption", "RptFigCaption", "RptEquation"):  # never break a caption/equation mid-way
+        for cap in ("RptTabCaption", "RptFigCaption", "RptEquation", "RptSection", "RptSub", "RptChapter"):  # never break a caption/equation mid-way
             st[cap].paragraph_format.keep_together = True
         eq = st["RptEquation"].paragraph_format
         eq.tab_stops.add_tab_stop(Inches(TEXT_WIDTH_IN / 2), WD_TAB_ALIGNMENT.CENTER)
