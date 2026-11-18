@@ -15,7 +15,7 @@ days, prof, hmm, ref = art["days"], art["kmeans_profiles"], art["hmm_test"], art
 
 # name clusters by the day type most of their members have
 wd_share = days.groupby("cluster").workingday.mean()
-names = {c: ("Commute shape (mostly working days)" if s > 0.5 else "Leisure shape (mostly weekends/holidays)")
+names = {c: ("Commute shape" if s > 0.5 else "Leisure shape")
          for c, s in wd_share.items()}
 days["pattern"] = days.cluster.map(names)
 prof["pattern"] = prof.cluster.map(names)
