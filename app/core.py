@@ -125,3 +125,34 @@ def kalman_forecast(cnt: np.ndarray, workingday: np.ndarray, hr: np.ndarray, t0:
         s = 1.96 * np.sqrt(var)
         rows.append({"step": h, "mean": np.expm1(z), "lo95": np.expm1(z - s), "hi95": np.expm1(z + s)})
     return pd.DataFrame(rows)
+
+
+WEATHER = {1: "Clear / partly cloudy", 2: "Mist / cloudy", 3: "Light rain or snow", 4: "Heavy rain / storm"}
+N_TRAIN = 13903  # first 80 % of hours (notebook split)
+
+
+def recorded_conditions(hour: pd.DataFrame, d: date, hr: int) -> dict | None:
+    """The logged weather and rentals for one hour, in the app's units; None if the hour has no row."""
+    m = (hour.date.dt.date == d) & (hour.hr == hr)
+    if not m.any():
+        return None
+    i = int(np.flatnonzero(m.values)[0])
+    r = hour.iloc[i]
+    return {"weathersit": int(r.weathersit), "temp_c": round(float(r.temp) * 41, 1),
+            "hum_pct": int(round(float(r.hum) * 100)), "wind_kmh": round(float(r.windspeed) * 67, 1),
+            "cnt": int(r.cnt), "casual": int(r.casual), "registered": int(r.registered),
+            "period": "training" if i < N_TRAIN else "test"}
+
+
+def day_hours(hour: pd.DataFrame, d: date) -> pd.DataFrame:
+    """All logged hours of one date with weather in the app's units."""
+    h = hour[hour.date.dt.date == d]
+    return pd.DataFrame({"hr": h.hr.values, "weathersit": h.weathersit.values, "temp_c": h.temp.values * 41,
+                         "hum_pct": h.hum.values * 100, "wind_kmh": h.windspeed.values * 67,
+                         "cnt": h.cnt.values, "casual": h.casual.values, "registered": h.registered.values})
+
+
+def same_hour_last_day(cnt: np.ndarray, t0: int, steps: np.ndarray) -> np.ndarray:
+    """Seasonal-naive baseline: the same hour on the last day fully observed before t0 (never looks ahead)."""
+    idx = t0 - 1 + steps - 24 * np.ceil(steps / 24).astype(int)
+    return cnt[idx]

@@ -12,22 +12,29 @@ st = ui.st
 art = ui.get_artifacts()
 ref, p1 = art["ref"], art["ref_pbl1"]
 st.markdown("All models were trained on the first 80 % of hours and tested on the last 20 % "
-            "(7 Aug – 31 Dec 2012). Numbers are read from the notebooks' saved results.")
+            "(7 Aug – 31 Dec 2012). Numbers are read from the notebooks' saved results. Click a column "
+            "header to sort; each table can be downloaded as CSV.")
+
+
+def table(df: pd.DataFrame, name: str) -> None:
+    st.dataframe(df.round(3), hide_index=True)
+    st.download_button(f"Download {name} (CSV)", df.to_csv(index=False).encode(), f"{name}.csv", "text/csv",
+                       key=f"dl_{name}")
 
 st.subheader("Predicting the hourly count (Units 2 and 5)")
 reg, cap = captions.regression(p1, ref)
-st.dataframe(reg.round(3), hide_index=True)
+table(reg, "regression_results")
 st.caption(cap)
 
 st.subheader("High vs low demand classification (Units 2 and 5)")
 cls, cap = captions.classification(p1, ref)
-st.dataframe(cls.round(3), hide_index=True)
+table(cls, "classification_results")
 st.caption(cap)
 
 st.subheader("Forecasting the next hours (Unit 4)")
-st.dataframe(pd.DataFrame(ref["forecast"]).round(3), hide_index=True)
+table(pd.DataFrame(ref["forecast"]), "forecast_results")
 st.caption(captions.forecast(ref))
 
 st.subheader("Choosing the number of clusters (Unit 3)")
-st.dataframe(pd.DataFrame(ref["kmeans_table"]).round(3), hide_index=True)
+table(pd.DataFrame(ref["kmeans_table"]), "kmeans_selection")
 st.caption(captions.kmeans(ref))

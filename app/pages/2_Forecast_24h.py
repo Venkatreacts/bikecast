@@ -10,7 +10,7 @@ import pandas as pd  # noqa: E402
 import ui  # noqa: E402
 from app import captions, core  # noqa: E402
 
-ui.setup("24-hour demand forecast (Kalman filter)")
+ui.setup("Demand forecast (Kalman filter)")
 st = ui.st
 art = ui.get_artifacts()
 hour, k, ref = art["hour"], art["kalman"], art["ref"]
@@ -19,10 +19,11 @@ st.markdown(
     "The filter tracks how far demand is running above or below the usual hour × working-day profile, "
     "then projects that gap forward. It only sees hours **before** the chosen start, as it would in real use."
 )
-c1, c2 = st.columns(2)
+c1, c2, c3 = st.columns(3)
 d = c1.date_input("Forecast start date (test period)", date(2012, 10, 17),
                   min_value=date(2012, 8, 7), max_value=date(2012, 12, 31))
 h0 = c2.selectbox("Start hour", list(range(24)), index=6, key="fc_hour", format_func=lambda h: f"{h:02d}:00")
+horizon = c3.select_slider("Forecast horizon (hours)", [6, 12, 24, 48], value=24, key="fc_horizon")
 
 stamp = pd.Timestamp(d) + pd.Timedelta(hours=h0)
 row_time = hour.date + pd.to_timedelta(hour.hr, unit="h")
@@ -31,20 +32,20 @@ st.caption(f"First forecast hour: {row_time.iloc[t0]:%d %b %Y %H:00} (hours miss
            "exactly as in the notebook).")
 
 cnt = hour.cnt.values.astype(float)
-fc = core.kalman_forecast(cnt, hour.workingday.values, hour.hr.values, t0, k)
+fc = core.kalman_forecast(cnt, hour.workingday.values, hour.hr.values, t0, k, horizon=horizon)
 steps = fc.step.values
 idx = t0 - 1 + steps
 has = idx < len(cnt)
 actual = np.where(has, cnt[np.minimum(idx, len(cnt) - 1)], np.nan)
 persist = np.full(len(steps), cnt[t0 - 1])
-yesterday = cnt[idx - 24]
+yesterday = core.same_hour_last_day(cnt, t0, steps)
 
 lines = pd.concat([
     pd.DataFrame({"step": steps, "rentals": v, "series": s})
     for s, v in [("Actual", actual), ("Kalman forecast", fc["mean"].values),
                  ("Persistence (last hour)", persist), ("Same hour yesterday", yesterday)]
 ]).dropna()
-band = alt.Chart(fc, title="Next 24 hours: forecast vs what actually happened").mark_area(
+band = alt.Chart(fc, title=f"Next {horizon} hours: forecast vs what actually happened").mark_area(
     opacity=0.2, color="#2a6f97").encode(x=alt.X("step:Q", title="hours ahead"), y="lo95:Q", y2="hi95:Q")
 ln = alt.Chart(lines).mark_line(point=True).encode(
     x="step:Q", y=alt.Y("rentals:Q", title="rentals per hour"), color=alt.Color("series:N", scale=alt.Scale(
@@ -52,7 +53,23 @@ ln = alt.Chart(lines).mark_line(point=True).encode(
         range=["#222222", "#2a6f97", "#e07a5f", "#81b29a"])),
     strokeDash=alt.condition(alt.datum.series == "Actual", alt.value([1, 0]), alt.value([4, 3])))
 st.altair_chart(band + ln, width="stretch")
-st.caption("Shaded band = Kalman 95 % prediction interval. Baselines use only information available at the start.")
+st.caption("Shaded band = Kalman 95 % prediction interval. Baselines use only information available at the start "
+           "(beyond 24 hours, 'same hour yesterday' repeats the last fully observed day).")
+
+if has.any():
+    wx = hour.iloc[idx[has]]
+    cond = pd.DataFrame({"step": steps[has], "Temperature (°C)": wx.temp.values * 41,
+                         "Weather": wx.weathersit.map(core.WEATHER).values})
+    wcol = alt.Scale(domain=list(core.WEATHER.values()), range=["#f2cc8f", "#a8b5c0", "#4a7fa7", "#3d405b"])
+    strip = alt.Chart(cond, title="Recorded weather during the forecast window").mark_rect().encode(
+        x=alt.X("step:O", title="hours ahead"), color=alt.Color("Weather:N", scale=wcol),
+        tooltip=["step:O", "Weather:N", alt.Tooltip("Temperature (°C):Q", format=".1f")]).properties(height=40)
+    tline = alt.Chart(cond).mark_line(point=True, color="#e07a5f").encode(
+        x=alt.X("step:O", title="hours ahead"), y=alt.Y("Temperature (°C):Q"),
+        tooltip=["step:O", alt.Tooltip("Temperature (°C):Q", format=".1f")]).properties(height=140)
+    st.altair_chart(alt.vconcat(strip, tline), width="stretch")
+    st.caption("The Kalman filter uses no weather, so rain or a cold snap inside the window shows up as a miss "
+               "until the filter catches up.")
 
 if has.any():
     a = actual[has]

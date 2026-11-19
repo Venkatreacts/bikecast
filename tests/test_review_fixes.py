@@ -56,6 +56,8 @@ def test_unpickle_failure_becomes_version_error(monkeypatch):
 def test_storm_option_warns():
     at = AppTest.from_file("../app/pages/1_Predict.py", default_timeout=120)
     at.run()
+    at.toggle(key="use_rec").set_value(False)  # recorded weather is on by default; switch to manual inputs
+    at.run()
     at.selectbox[1].set_value(4)
     at.run()
     assert not at.exception and len(at.warning) >= 1

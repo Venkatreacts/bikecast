@@ -4,7 +4,8 @@ import pytest
 from streamlit.testing.v1 import AppTest
 
 PAGES = ["app/Home.py", "app/pages/1_Predict.py", "app/pages/2_Forecast_24h.py",
-         "app/pages/3_Demand_Patterns.py", "app/pages/4_Model_Leaderboard.py"]
+         "app/pages/3_Demand_Patterns.py", "app/pages/4_Model_Leaderboard.py",
+         "app/pages/5_Explore_Data.py"]
 
 
 def run(path):
