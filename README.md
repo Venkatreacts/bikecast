@@ -15,11 +15,12 @@ Live demo: https://bikecast.streamlit.app
 ## What is here
 
 - `notebooks/`: the full analysis. PBL 1 covers Units 1–2 (probability, regression, Bayesian logistic regression, SVM). PBL 2/3 covers Units 3–5 (clustering, PCA, HMM, Kalman filter, trees, boosting, stacking, GAM).
-- `app/`: a Streamlit app with four pages:
-  - **Predict**: hourly rentals and the probability of high demand.
-  - **Forecast 24h**: a Kalman filter forecast for the next 24 hours.
+- `app/`: a Streamlit app with five pages:
+  - **Predict**: hourly rentals and the probability of high demand. For 2011–2012 it fills in the recorded weather, shows the actual rentals, and plots predicted against actual for the whole day.
+  - **Forecast**: a Kalman filter forecast 6–48 hours ahead, with the weather recorded in that window.
   - **Demand Patterns**: K-means day shapes, a PCA map and the hidden HMM states.
-  - **Model Leaderboard**: the test metrics of every model.
+  - **Model Leaderboard**: the test metrics of every model, downloadable as CSV.
+  - **Explore Data**: filter the raw hourly records and see the hour × weekday pattern, rider types and the weather effect.
 - `training/train_models.py`: re-runs the Units 3–5 notebook unchanged. It checks the notebook's headline numbers against `reference/results_units345.json`, then saves the models the app uses to `artifacts/`.
 - `tests/`: checks that the app gives exactly the notebook's predictions and that every page runs.
 

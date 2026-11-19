@@ -67,7 +67,7 @@ def test_predict_manual_mode_and_future_date():
 
 
 def test_forecast_48h_at_end():
-    at = page("2_Forecast_24h.py")
+    at = page("2_Forecast.py")
     at.date_input[0].set_value(date(2012, 12, 30))
     at.select_slider(key="fc_horizon").set_value(48)
     at.run()
